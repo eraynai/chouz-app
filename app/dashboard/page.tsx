@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { SectionCards } from "./_components/section-cards";
 import { ChartAreaInteractive } from "./_components/chart-interactive";
 
+export const dynamic = "force-dynamic";
+
 export default async function Dashboard() {
   const result = await auth.api.getSession({
     headers: await headers(), // you need to pass the headers object.
