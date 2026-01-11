@@ -237,3 +237,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 Built with ❤️ using Next.js and modern web technologies.
+# chouz-app
