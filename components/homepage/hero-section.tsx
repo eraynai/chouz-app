@@ -137,7 +137,7 @@ export default function HeroSection() {
                 focused, and genuinely ready for the day.
               </p>
               <p className="text-base opacity-90 md:text-lg">
-                Most mornings start with noise. Notifications. Anxiety. The feeling that you're already behind.
+                Most mornings start with noise. Notifications. Anxiety. The feeling that you&apos;re already behind.
               </p>
             </div>
 
