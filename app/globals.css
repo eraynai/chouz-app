@@ -103,7 +103,7 @@
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-background text-foreground font-sans;
+        @apply font-sans;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -124,4 +124,59 @@
     h6 {
         @apply font-medium tracking-tight;
     }
+}
+
+/* ===============================
+   Chouz landing experience layer
+   =============================== */
+
+/* Rounded CTA pill */
+.rounded-pill {
+  border-radius: 9999px;
+}
+
+/* Hero background overlay */
+.hero-bg {
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.25), transparent 60%);
+  opacity: 1;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 900ms ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 900ms ease both;
 }

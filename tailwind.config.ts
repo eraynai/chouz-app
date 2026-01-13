@@ -26,11 +26,11 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#18181b",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#f4f4f5",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -61,11 +61,25 @@ const config = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        // Chouz-specific colors
+        "background-light": "#f8f9fa",
+        "background-dark": "#0f0f13",
+        "surface-light": "#ffffff",
+        "surface-dark": "#18181b",
+        "text-light": "#27272a",
+        "text-dark": "#e4e4e7",
+        "muted-light": "#52525b",
+        "muted-dark": "#a1a1aa",
+      },
+      fontFamily: {
+        sans: ["Inter", "var(--font-apple-system)", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        pill: "9999px",
       },
       keyframes: {
         "accordion-down": {
@@ -76,10 +90,30 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulseSoft: {
+          "0%, 100%": { opacity: "0.9", transform: "scale(1.02)" },
+          "50%": { opacity: "1", transform: "scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+        "fade-in": "fadeIn 1.2s ease-out forwards",
+        "pulse-slow": "pulseSoft 8s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

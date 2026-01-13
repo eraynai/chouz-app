@@ -1,6 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
-import { ThemeProvider } from "../components/provider";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
@@ -33,18 +32,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-[-apple-system,BlinkMacSystemFont]antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          forcedTheme="light"
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-          <Analytics />
-        </ThemeProvider>
+       <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              document.documentElement.classList.add('dark');
+            })();
+          `
+        }} />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200"
+        />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet"
+            />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            body {
+              background-color: #f8f9fa;
+              color: #27272a;
+            }
+            .dark body {
+              background-color: #0f0f13;
+              color: #e4e4e7;
+            }
+          `
+        }} />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        <Toaster />
+        <Analytics />
       </body>
     </html>
   );
