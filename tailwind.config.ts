@@ -72,8 +72,8 @@ const config = {
         "muted-dark": "#a1a1aa",
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-apple-system)", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        serif: ["Playfair Display", "Georgia", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
