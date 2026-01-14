@@ -47,6 +47,7 @@ export default function SevenMorningsSection() {
   }, []);
 
   return (
+    <>
     <section className="reveal grid items-center gap-12 md:grid-cols-2">
       <div className="rounded-2xl bg-secondary p-8 transition-all duration-500 hover:shadow-md dark:bg-background-dark md:order-2">
         <div className="mb-2 flex items-baseline">
@@ -65,16 +66,16 @@ export default function SevenMorningsSection() {
         </div>
 
         <p className="text-sm italic text-muted-light dark:text-muted-dark">
-          &quot;A different relationship to mornings — one you&apos;ll actually want to return to.&quot;
+          &quot;A different relationship to mornings — one you&apos;ll want to return to.&quot;
         </p>
       </div>
 
       <div className="md:order-1">
-        <h2 className="mb-6 text-2xl font-serif md:text-3xl">Over 7 mornings, you&apos;ll experience:</h2>
+        <h2 className="mb-6 text-2xl font-serif md:text-3xl">Over 7 mornings, you&apos;ll begin to experience:</h2>
         <ul className="space-y-4">
           {[
-            "Short, calming prompts you can read as you go",
-            "Gentle structure, without obligation",
+            "Short, calming prompts you can return to each morning",
+            "A gentle structure that supports you — without obligation",
             "A quiet start before the world asks anything of you",
           ].map((text) => (
             <li key={text} className="group flex items-start gap-3">
@@ -90,6 +91,11 @@ export default function SevenMorningsSection() {
           ))}
         </ul>
       </div>
+       
     </section>
+    <div className="text-center">
+          <p>Nothing to complete. Nothing to track. Just a space to begin.</p>
+        </div>
+    </>
   );
 }

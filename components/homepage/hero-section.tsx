@@ -110,7 +110,7 @@ export default function HeroSection() {
       <nav className="fixed top-0 z-50 w-full border-b border-transparent bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
           <Link
-            className="text-lg font-medium tracking-tight transition-opacity hover:opacity-70"
+            className="font-display text-4xl font-medium tracking-tight transition-opacity hover:opacity-70"
             href="/"
           >
             chouz
@@ -127,17 +127,19 @@ export default function HeroSection() {
             </span>
 
             <h1 className="mb-8 text-balance text-4xl font-serif font-medium leading-tight md:text-6xl">
-              Start your day with{" "}
-              <span className="italic text-gray-400 dark:text-gray-500">calm</span> — not chaos.
+              A calmer way to begin — {" "}
+              <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
             </h1>
 
             <div className="space-y-6 text-lg font-light leading-relaxed text-muted-light dark:text-gray-400 md:text-xl">
               <p>
-                A gentle 7-morning path for freelancers and creative professionals who want to feel grounded,
-                focused, and genuinely ready for the day.
+                Chouz is a gentle morning ritual for wellness practitioners who want to feel emotionally prepared and grounded before they serve others.
               </p>
               <p className="text-base opacity-90 md:text-lg">
-                Most mornings start with noise. Notifications. Anxiety. The feeling that you&apos;re already behind.
+                Each morning for 7 days, you’ll receive a short, guided ritual designed to help you regulate your nervous system before your day begins.
+              </p>
+              <p className="text-base opacity-90 md:text-lg">
+                No tracking. No pressure. Just presence.
               </p>
             </div>
 
@@ -146,14 +148,14 @@ export default function HeroSection() {
                 className="group relative inline-flex items-center justify-center rounded-pill bg-primary px-8 py-4 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:bg-white dark:text-black dark:focus:ring-offset-black"
                 href="#signup"
               >
-                <span>Begin the chouz Morning Path</span>
+                <span>Begin the 7-day Morning Path</span>
                 <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
                   arrow_forward
                 </span>
               </a>
 
               <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
-                Delivered by email. Unsubscribe anytime.
+                Delivered by email. No app required.
               </p>
             </div>
           </div>

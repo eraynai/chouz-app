@@ -110,6 +110,9 @@
     .font-serif {
         font-family: 'Playfair Display', Georgia, serif !important;
     }
+    .font-display {
+        font-family: 'Fraunces', Georgia, serif !important;
+    }
     button,
     input,
     select,

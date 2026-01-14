@@ -74,6 +74,7 @@ const config = {
       fontFamily: {
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         serif: ["Playfair Display", "Georgia", "serif"],
+        display: ["Fraunces", "Georgia", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

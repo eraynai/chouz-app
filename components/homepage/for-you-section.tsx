@@ -2,6 +2,7 @@
 
 export default function ForYouSection() {
   return (
+    <>
     <section className="reveal">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-surface-dark animate-float" style={{ animationDelay: "0.2s" }}>
@@ -12,15 +13,15 @@ export default function ForYouSection() {
           <ul className="space-y-3 text-sm leading-relaxed text-muted-light dark:text-muted-dark">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              You make your own schedule
+              You make your own schedule — and carry responsibility for others
             </li>
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              Your mornings feel rushed or emotionally noisy
+              Your mornings feel rushed or emotionally noisy before the day begins
             </li>
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              You want calm without discipline or pressure
+              You want calm without discipline, pressure, or performance
             </li>
           </ul>
         </div>
@@ -37,15 +38,21 @@ export default function ForYouSection() {
             </li>
             <li className="flex items-center gap-2 opacity-75">
               <span className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-              A habit-streak challenge
+              A habit-streak or discipline challenge
             </li>
             <li className="flex items-center gap-2 opacity-75">
               <span className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-              A meditation app replacement
+              A replacement for your existing practices
             </li>
           </ul>
         </div>
+         
       </div>
+      
     </section>
+    <div className="text-center">
+          <p>Chouz is meant to support your mornings — not control them.</p>
+      </div>
+    </>
   );
 }
