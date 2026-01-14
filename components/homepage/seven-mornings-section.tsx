@@ -79,7 +79,7 @@ export default function SevenMorningsSection() {
             "A quiet start before the world asks anything of you",
           ].map((text) => (
             <li key={text} className="group flex items-start gap-3">
-              <div className="mt-1 rounded-full bg-gray-100 p-1 transition-colors group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
+              <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 transition-colors group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
                 <span className="material-symbols-outlined text-sm text-gray-600 dark:text-gray-300">
                   check
                 </span>
