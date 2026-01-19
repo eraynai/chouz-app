@@ -141,6 +141,14 @@ export default function HeroSection() {
               <p className="text-base opacity-90 md:text-lg">
                 No tracking. No pressure. Just presence.
               </p>
+              <p className="text-base opacity-90 md:text-lg italic">
+                  Why “
+                  <span className="text-white">Chouz</span>
+                  ”?
+              </p>
+              <p className="text-base opacity-90 md:text-lg">
+                A Greek word for staying with the morning — awake, warm, unhurried, before the day begins.
+              </p>
             </div>
 
             <div className="mt-10 flex flex-col items-center gap-4 md:flex-row">
