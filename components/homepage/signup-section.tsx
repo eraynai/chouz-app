@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export default function SignupSection() {
   const [countdown, setCountdown] = useState({
     hours: "14",
@@ -9,19 +11,20 @@ export default function SignupSection() {
     seconds: "12",
   });
 
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
   useEffect(() => {
     const getNext7AM = () => {
       const now = new Date();
       const next7AM = new Date();
-      
-      // Set to 7:00:00 AM today
+
       next7AM.setHours(7, 0, 0, 0);
-      
-      // If it's already past 7 AM today, set to 7 AM tomorrow
+
       if (now >= next7AM) {
         next7AM.setDate(next7AM.getDate() + 1);
       }
-      
+
       return next7AM;
     };
 
@@ -30,12 +33,8 @@ export default function SignupSection() {
       const endTime = getNext7AM();
       const timeLeft = endTime.getTime() - now;
 
-      // If somehow we're past the target (shouldn't happen), recalculate
-      if (timeLeft < 0) {
-        return;
-      }
+      if (timeLeft < 0) return;
 
-      // Calculate total hours instead of days + hours
       const totalHours = Math.floor(timeLeft / (1000 * 60 * 60));
       const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
@@ -59,7 +58,9 @@ export default function SignupSection() {
     >
       <div className="relative z-10 mx-auto max-w-md">
         <h2 className="mb-4 text-3xl font-serif">Sign up for chouz</h2>
-        <p className="mb-8 text-muted-light dark:text-muted-dark">Join the free 7-morning journey.</p>
+        <p className="mb-8 text-muted-light dark:text-muted-dark">
+          Join the free 7-morning journey.
+        </p>
 
         <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
           <div className="mb-4 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-light opacity-80 dark:text-muted-dark">
@@ -87,9 +88,42 @@ export default function SignupSection() {
 
         <form
           className="space-y-4"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            alert("Welcome to chouz. Check your inbox.");
+
+            // prevent double submits
+            if (status === "loading") return;
+
+            setStatus("loading");
+            setErrorMsg("");
+
+            const form = e.currentTarget;
+            const formData = new FormData(form);
+            const email = String(formData.get("email") || "").trim();
+
+            try {
+              const res = await fetch("/api/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+              });
+
+              const data = await res.json().catch(() => ({}));
+
+              if (!res.ok) {
+                setStatus("error");
+                setErrorMsg(
+                  data?.error || "Something went wrong. Please try again."
+                );
+                return;
+              }
+
+              setStatus("success");
+              form.reset();
+            } catch {
+              setStatus("error");
+              setErrorMsg("Network error. Please try again.");
+            }
           }}
         >
           <div className="text-left">
@@ -103,18 +137,35 @@ export default function SignupSection() {
               placeholder="name@example.com"
               required
               type="email"
+              autoComplete="email"
+              disabled={status === "loading"}
             />
           </div>
 
           <button
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-medium text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:bg-white dark:text-black"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-medium text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70 dark:bg-white dark:text-black"
             type="submit"
+            disabled={status === "loading"}
           >
-            <span>Begin tomorrow&apos;s Chouz Morning Path</span>
+            <span>
+              {status === "loading"
+                ? "Joining…"
+                : "Begin tomorrow's Chouz Morning Path"}
+            </span>
           </button>
+
+          {status === "success" && (
+            <p className="text-sm opacity-80">You’re in. Check your inbox.</p>
+          )}
+
+          {status === "error" && (
+            <p className="text-sm text-red-500">{errorMsg}</p>
+          )}
         </form>
 
-        <p className="mt-6 text-xs opacity-60 text-muted-light dark:text-muted-dark">No spam. Just calm.</p>
+        <p className="mt-6 text-xs opacity-60 text-muted-light dark:text-muted-dark">
+          No spam. Just calm.
+        </p>
       </div>
     </section>
   );
