@@ -186,3 +186,79 @@
 .animate-fade-in-up {
   animation: fadeInUp 900ms ease both;
 }
+
+/* ===============================
+   Moon ↔ Sun nav icon animation
+   =============================== */
+.moon-sun-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.moon-sun-body {
+  fill: currentColor;
+  stroke: none;
+}
+
+.moon-sun-rays {
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.0;
+  transform-origin: center;
+  animation: moonSunRays 6s ease-in-out infinite;
+}
+
+.moon-sun-mask {
+  /* Match nav background so it looks like a cut-out */
+  fill: #ffffff;
+  stroke: none;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  animation: moonSunCycle 6s ease-in-out infinite alternate;
+}
+
+.moon-sun-mask circle {
+  /* Ensure inner circle inherits the mask color */
+  fill: inherit;
+  stroke: none;
+}
+
+.dark .moon-sun-mask {
+  /* In dark mode, match the dark nav background */
+  fill: #020617; /* tailwind slate-950-ish */
+}
+
+@keyframes moonSunCycle {
+  /* Start: tilted crescent (mask slightly over the body from the upper-left) */
+  0% {
+    transform: translate(-4px, -2px) rotate(-20deg) scale(1.02);
+    opacity: 1;
+  }
+  /* Middle: full sun (mask completely invisible over the center) */
+  50% {
+    transform: translate(0px, 0px) rotate(0deg) scale(0.01);
+    opacity: 0;
+  }
+  /* End: tilted crescent from the lower-right */
+  100% {
+    transform: translate(4px, 2px) rotate(20deg) scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes moonSunRays {
+  0%, 15% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  35%, 65% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}

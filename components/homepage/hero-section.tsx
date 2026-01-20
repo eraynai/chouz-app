@@ -2,6 +2,42 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+function MoonSunIcon() {
+  return (
+    <svg
+      className="moon-sun-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      {/* Main circle (sun/moon body) */}
+      <circle
+        className="moon-sun-body"
+        cx="12"
+        cy="12"
+        r="7"
+      />
+      {/* Rays */}
+      <g className="moon-sun-rays">
+        <line x1="12" y1="1.5" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="22.5" />
+        <line x1="1.5" y1="12" x2="4" y2="12" />
+        <line x1="20" y1="12" x2="22.5" y2="12" />
+        <line x1="4.5" y1="4.5" x2="6.25" y2="6.25" />
+        <line x1="17.75" y1="17.75" x2="19.5" y2="19.5" />
+        <line x1="4.5" y1="19.5" x2="6.25" y2="17.75" />
+        <line x1="17.75" y1="6.25" x2="19.5" y2="4.5" />
+      </g>
+      {/* Cut-out circle that animates to create the crescent */}
+      <g className="moon-sun-mask">
+        <circle
+          cx="12"
+          cy="12"
+          r="7"
+        />
+      </g>
+    </svg>
+  );
+}
 
 export default function HeroSection() {
   
@@ -109,12 +145,21 @@ export default function HeroSection() {
     <>
       <nav className="fixed top-0 z-50 w-full border-b border-transparent bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
-          <Link
-            className="font-display text-4xl font-medium tracking-tight transition-opacity hover:opacity-70"
-            href="/"
-          >
-            chouz
-          </Link>
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              aria-label="Reload homepage"
+              className="inline-flex items-center justify-center"
+            >
+              <MoonSunIcon />
+            </a>
+            <Link
+              className="font-display text-4xl font-medium tracking-tight leading-none transition-opacity hover:opacity-70"
+              href="/"
+            >
+              chouz
+            </Link>
+          </div>
         </div>
       </nav>
 
