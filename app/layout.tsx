@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     siteName: "Chouz",
     images: [
       {
-        url: "https://jdj14ctwppwprnqu.public.blob.vercel-storage.com/nsk-w9fFwBBmLDLxrB896I4xqngTUEEovS.png",
+        url: "/og-chouz.png",
         width: 1200,
         height: 630,
-        alt: "Next.js Starter Kit",
+        alt: "Chouz — A calmer way to begin",
       },
     ],
     locale: "en-US",
