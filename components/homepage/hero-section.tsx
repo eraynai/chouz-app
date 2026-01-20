@@ -188,7 +188,7 @@ export default function HeroSection() {
               </p>
               <p className="text-base opacity-90 md:text-lg italic">
                   Why “
-                  <span className="text-white">Chouz</span>
+                  <span className="text-black dark:text-white">Chouz</span>
                   ”?
               </p>
               <p className="text-base opacity-90 md:text-lg">
