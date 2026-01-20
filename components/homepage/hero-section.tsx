@@ -146,13 +146,13 @@ export default function HeroSection() {
       <nav className="fixed top-0 z-50 w-full border-b border-transparent bg-background-light/80 backdrop-blur-md dark:bg-background-dark/80">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
           <div className="flex items-center gap-3">
-            <a
+            <Link
               href="/"
               aria-label="Reload homepage"
               className="inline-flex items-center justify-center"
             >
               <MoonSunIcon />
-            </a>
+            </Link>
             <Link
               className="font-display text-4xl font-medium tracking-tight leading-none transition-opacity hover:opacity-70"
               href="/"
