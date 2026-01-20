@@ -4,15 +4,15 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/provider";
 export const metadata: Metadata = {
-  title: "Next.js Starter Kit - Launch Your SAAS",
+  title: "Chouz — A calmer way to begin",
   description:
-    "A modern, full-stack Next.js starter kit with authentication, payments, and dashboard. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
+    "Chouz is a gentle 7-day morning ritual delivered by email, designed to help you begin your day with calm, presence, and emotional grounding — before the world needs you.",
   openGraph: {
-    title: "Next.js Starter Kit",
+    title: "Chouz — A calmer way to begin",
     description:
-      "A modern, full-stack Next.js starter kit with authentication, payments, and dashboard. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-    url: "nextstarter.xyz",
-    siteName: "Next.js Starter Kit",
+      "A gentle 7-day morning ritual delivered by email. No tracking. No pressure. Just presence.",
+    url: "https://chouz.app", // update if different
+    siteName: "Chouz",
     images: [
       {
         url: "https://jdj14ctwppwprnqu.public.blob.vercel-storage.com/nsk-w9fFwBBmLDLxrB896I4xqngTUEEovS.png",
