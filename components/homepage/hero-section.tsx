@@ -192,7 +192,7 @@ export default function HeroSection() {
                   ”?
               </p>
               <p className="text-base opacity-90 md:text-lg">
-                A Greek word for staying with the morning — awake, warm, unhurried, before the day begins.
+                The Greek word resonates as it captures the feeling of staying with the morning — awake, warm, unhurried, before the day begins.
               </p>
             </div>
 
