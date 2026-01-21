@@ -183,7 +183,7 @@ export default function HeroSection() {
               <p className="text-base opacity-90 md:text-lg">
                 Each morning for 7 days, you’ll receive a short, guided ritual designed to help you regulate your nervous system before your day begins.
               </p>
-              <p className="text-base opacity-90 md:text-lg">
+              {/* <p className="text-base opacity-90 md:text-lg">
                 No tracking. No pressure. Just presence.
               </p>
               <p className="text-base opacity-90 md:text-lg italic">
@@ -193,7 +193,39 @@ export default function HeroSection() {
               </p>
               <p className="text-base opacity-90 md:text-lg">
                 The Greek word resonates as it captures the feeling of staying with the morning — awake, warm, unhurried, before the day begins.
-              </p>
+              </p> */}
+            </div>
+
+            {/* Sample of what a day’s email feels like */}
+            <div className="mt-10 space-y-3">
+              <span className="inline-flex items-center rounded-full border border-gray-200/70 bg-white/70 px-3 py-1 text-xs font-medium uppercase tracking-wide text-black shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:text-gray-200">
+                Day 1 — A glimpse
+              </span>
+
+              <div className="sample-card">
+                <div className="flex items-center justify-between gap-6">
+                  <div className="space-y-3 text-left text-sm leading-relaxed text-zinc-800 dark:text-white">
+                    <p className="sample-line sample-line-1 text-xs font-medium uppercase tracking-[0.18em] opacity-90">
+                      Good morning
+                    </p>
+                    <p className="sample-line sample-line-2">
+                      Before you reach for your phone today, pause for just a moment.
+                    </p>
+                    <p className="sample-line sample-line-3 text-sm opacity-90">
+                      Take a slow breath in… and a longer breath out.
+                    </p>
+                    <p className="sample-line sample-line-4 text-sm opacity-90">
+                      This isn’t a task — it’s a moment.
+                    </p>
+                  </div>
+                  <div className="breath-orb-wrapper" aria-hidden="true">
+                    <div className="breath-orb">
+                      <div className="breath-orb-ring breath-orb-ring--inner" />
+                      <div className="breath-orb-ring breath-orb-ring--outer" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="mt-10 flex flex-col items-center gap-4 md:flex-row">
