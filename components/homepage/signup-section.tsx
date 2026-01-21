@@ -5,50 +5,50 @@ import { useEffect, useState } from "react";
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function SignupSection() {
-  const [countdown, setCountdown] = useState({
-    hours: "14",
-    minutes: "35",
-    seconds: "12",
-  });
+  // const [countdown, setCountdown] = useState({
+  //   hours: "14",
+  //   minutes: "35",
+  //   seconds: "12",
+  // });
 
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
   useEffect(() => {
-    const getNext7AM = () => {
-      const now = new Date();
-      const next7AM = new Date();
+    // const getNext7AM = () => {
+    //   const now = new Date();
+    //   const next7AM = new Date();
 
-      next7AM.setHours(7, 0, 0, 0);
+    //   next7AM.setHours(7, 0, 0, 0);
 
-      if (now >= next7AM) {
-        next7AM.setDate(next7AM.getDate() + 1);
-      }
+    //   if (now >= next7AM) {
+    //     next7AM.setDate(next7AM.getDate() + 1);
+    //   }
 
-      return next7AM;
-    };
+    //   return next7AM;
+    // };
 
-    const tick = () => {
-      const now = Date.now();
-      const endTime = getNext7AM();
-      const timeLeft = endTime.getTime() - now;
+    // const tick = () => {
+    //   const now = Date.now();
+    //   const endTime = getNext7AM();
+    //   const timeLeft = endTime.getTime() - now;
 
-      if (timeLeft < 0) return;
+    //   if (timeLeft < 0) return;
 
-      const totalHours = Math.floor(timeLeft / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    //   // const totalHours = Math.floor(timeLeft / (1000 * 60 * 60));
+    //   // const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    //   // const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-      setCountdown({
-        hours: String(totalHours).padStart(2, "0"),
-        minutes: String(minutes).padStart(2, "0"),
-        seconds: String(seconds).padStart(2, "0"),
-      });
-    };
+    //   // setCountdown({
+    //   //   hours: String(totalHours).padStart(2, "0"),
+    //   //   minutes: String(minutes).padStart(2, "0"),
+    //   //   seconds: String(seconds).padStart(2, "0"),
+    //   // });
+    // };
 
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
+    // tick();
+    // const id = window.setInterval(tick, 1000);
+    // return () => window.clearInterval(id);
   }, []);
 
   return (
@@ -62,7 +62,7 @@ export default function SignupSection() {
           Join the free 7-morning journey.
         </p>
 
-        <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
+        {/* <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
           <div className="mb-4 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-light opacity-80 dark:text-muted-dark">
             <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
             <span>The next morning begins in…</span>
@@ -84,7 +84,7 @@ export default function SignupSection() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <form
           className="space-y-4"

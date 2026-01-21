@@ -51,8 +51,8 @@
     --card-foreground: #000000;
     --popover: #ffffff;
     --popover-foreground: #000000;
-    --primary: #000;
-    --primary-foreground: #ffffff;
+    --primary: #f59e0b; /* warm amber */
+    --primary-foreground: #111827; /* near-black text on amber */
     --secondary: #f5f5f7; /* Apple Light Gray */
     --secondary-foreground: #1d1d1f;
     --muted: #f5f5f7;
@@ -209,6 +209,7 @@
   padding: 18px 20px;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  transition: background-color 2500ms ease-in-out, border-color 2500ms ease-in-out, box-shadow 2500ms ease-in-out;
 }
 
 .dark .sample-card {

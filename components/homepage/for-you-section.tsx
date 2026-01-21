@@ -3,7 +3,7 @@
 export default function ForYouSection() {
   return (
     <>
-    <section className="reveal">
+    <section className="reveal pt-24">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-surface-dark animate-float" style={{ animationDelay: "0.2s" }}>
           <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400">
@@ -50,9 +50,9 @@ export default function ForYouSection() {
       </div>
       
     </section>
-    <div className="text-center">
+    {/* <div className="text-center">
           <p>Chouz is meant to support your mornings — not control them.</p>
-      </div>
+      </div> */}
     </>
   );
 }

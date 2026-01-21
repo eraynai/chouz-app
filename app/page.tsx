@@ -15,9 +15,9 @@ export default async function Home() {
     <div className="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
       <HeroSection />
       <main className="mx-auto max-w-4xl space-y-32 px-6 pb-24">
+        <ForYouSection />
         <IntroVideoSection />
         <SevenMorningsSection />
-        <ForYouSection />
         <SignupSection />
       </main>
       {/* <Integrations />
