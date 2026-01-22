@@ -6,21 +6,21 @@ export default function ForYouSection() {
     <section className="reveal pt-24">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-surface-dark animate-float" style={{ animationDelay: "0.2s" }}>
-          <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400">
+          <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
             <span className="material-symbols-outlined">favorite_border</span>
           </div>
           <h3 className="mb-4 text-xl font-serif">This is for you if:</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-muted-light dark:text-muted-dark">
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               You make your own schedule — and carry responsibility for others
             </li>
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               Your mornings feel rushed or emotionally noisy before the day begins
             </li>
             <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               You want calm without discipline, pressure, or performance
             </li>
           </ul>

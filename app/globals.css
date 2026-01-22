@@ -322,12 +322,36 @@
 /* legacy sample-pulse removed; breathing is now handled by .breath-orb */
 
 .moon-sun-body {
-  fill: currentColor;
+  /* Animate disc color so moon is white and sun matches CTA amber */
+  fill: #ffffff;
   stroke: none;
+  animation: moonSunColor 6s ease-in-out infinite alternate;
+}
+
+@keyframes moonSunColor {
+  /* Moon phases (crescent) → white */
+  0% {
+    fill: #ffffff;
+  }
+  /* Transition toward sun */
+  30% {
+    fill: #fed7aa; /* soft warm ramp */
+  }
+  /* Full sun phase → amber */
+  50% {
+    fill: #f59e0b;
+  }
+  /* Back toward moon */
+  70% {
+    fill: #fed7aa;
+  }
+  100% {
+    fill: #ffffff;
+  }
 }
 
 .moon-sun-rays {
-  stroke: currentColor;
+  stroke: #f59e0b; /* match CTA amber */
   stroke-width: 1.2;
   stroke-linecap: round;
   opacity: 0.0;
