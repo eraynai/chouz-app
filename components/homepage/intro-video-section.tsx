@@ -137,7 +137,7 @@ export default function IntroVideoSection() {
   };
 
   return (
-    <section className="reveal">
+    <section className="pt-20 reveal">
       <div className="relative mx-auto w-full max-w-4xl">
         <div className="mb-8 text-center">
           <h2 className="text-2xl font-serif md:text-3xl">Chouz is not about doing mornings &quot;right.&quot; It&apos;s about beginning them with care.</h2>

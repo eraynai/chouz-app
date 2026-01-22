@@ -114,14 +114,14 @@ export default function HeroSection() {
 
       <header className="hero-bg relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
         <div className="hero-overlay" />
-        <div className="relative z-10 mx-auto max-w-2xl px-6 text-center md:text-left">
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center md:text-left">
           <div className="animate-fade-in-up">
             <h1 className="mb-8 text-balance text-center text-4xl font-serif font-medium leading-tight md:text-6xl">
               <span className="block">
                 A calmer way to begin — {" "}
                 <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
               </span>
-              <span className="mt-2 text-balance block text-4xl leading-tight md:text-6xl">
+              <span className="mt-2 text-balance block text-3xl leading-tight md:text-5xl">
                 So <span className="italic text-gray-400 dark:text-gray-500">you</span> can show up grounded for the people you support.
               </span>
             </h1>
@@ -129,8 +129,56 @@ export default function HeroSection() {
             <p>
               Chouz is a gentle morning ritual for wellness practitioners who want to feel emotionally prepared and grounded before they serve others.
             </p>
+    <section className="animate-fade-in">
+      <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+        <div
+          className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-white animate-float md:p-10"
+          style={{ animationDelay: "0.2s" }}
+        >
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-500 ring-1 ring-amber-200/80 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-500/60">
+            <span className="material-symbols-outlined text-xl">favorite_border</span>
+          </div>
+          <h3 className="mb-4 text-xl font-serif text-zinc-900">This is for you if:</h3>
+          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700">
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1 w-1 rounded-full bg-amber-400" /> */}
+              <span>You make your own schedule — and carry responsibility for others</span>
+            </li>
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" /> */}
+              <span>Your mornings feel rushed or emotionally noisy before the day begins</span>
+            </li>
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" /> */}
+              <span>You want calm without discipline, pressure, or performance</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-white md:p-10">
+          <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-100 dark:text-gray-600">
+            <span className="material-symbols-outlined">block</span>
+          </div>
+          <h3 className="mb-4 text-xl font-serif text-zinc-900">This is not:</h3>
+          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700">
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
+              <span>A productivity system</span>
+            </li>
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
+              <span>A habit-streak or discipline challenge</span>
+            </li>
+            <li className="flex items-start gap-3">
+              {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
+              <span>A replacement for your existing practices</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
             <p>
-              After years of navigating client pressure, uncertainty, and self-directed work, I built Chouz as a way to begin my mornings with more steadiness — a practice I return to every day.
+              After years of navigating client pressure, uncertainty, and self-directed work, I built Chouz as a way to begin my mornings with more steadiness — a gentle practice rooted in nervous system regulation and embodied awareness.
             </p>
             <p className="text-base opacity-90 text-lg md:text-xl">
               Each morning for 7 days, you’ll receive a short, guided ritual designed to help you regulate your nervous system before your day begins.
@@ -192,7 +240,7 @@ export default function HeroSection() {
               </a>
 
               <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
-                Delivered by email. No app required.
+                Delivered by email. No credit card required.
               </p>
             </div>
           </div>
