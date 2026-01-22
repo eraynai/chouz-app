@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
 import Link from "next/link";
 import FooterSection from "@/components/homepage/footer";
 
@@ -9,14 +6,9 @@ export const metadata = {
 };
 
 export default function PrivacyTermsPage() {
-  useEffect(() => {
-    // Ensure privacy page always uses light theme
-    document.documentElement.classList.remove("dark");
-  }, []);
-
   return (
     <>
-      <main className="min-h-screen bg-background-light px-6 py-16 text-sm text-muted-light dark:bg-background-dark dark:text-muted-dark">
+      <main className="min-h-screen bg-white px-6 py-16 text-sm text-zinc-800">
         <div className="mx-auto max-w-3xl space-y-8">
         <header className="space-y-3">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
