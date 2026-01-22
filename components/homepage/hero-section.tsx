@@ -116,36 +116,36 @@ export default function HeroSection() {
         <div className="hero-overlay" />
         <div className="relative z-10 mx-auto max-w-2xl px-6 text-center md:text-left">
           <div className="animate-fade-in-up">
-            {/* <span className="mb-6 inline-block rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-light backdrop-blur-sm dark:border-white/10 dark:bg-white/10 dark:text-gray-300">
-              7-Day Journey
-            </span> */}
-
-            <h1 className="mb-8 text-balance text-4xl font-serif font-medium leading-tight md:text-6xl">
-              A calmer way to begin — {" "}
-              <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
+            <h1 className="mb-8 text-balance text-center text-4xl font-serif font-medium leading-tight md:text-6xl">
+              <span className="block">
+                A calmer way to begin — {" "}
+                <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
+              </span>
+              <span className="mt-2 text-balance block text-4xl leading-tight md:text-6xl">
+                So <span className="italic text-gray-400 dark:text-gray-500">you</span> can show up grounded for the people you support.
+              </span>
             </h1>
-
             <div className="space-y-6 text-lg font-light leading-relaxed text-muted-light dark:text-gray-400 md:text-xl">
-              <p>
-                Chouz is a gentle morning ritual for wellness practitioners who want to feel emotionally prepared and grounded before they serve others.
-              </p>
-              <p>
-                After years of navigating client pressure, uncertainty, and self-directed work, I built Chouz as a way to begin my mornings with more steadiness — a practice I return to every day.
-              </p>
-              <p className="text-base opacity-90 text-lg md:text-xl">
-                Each morning for 7 days, you’ll receive a short, guided ritual designed to help you regulate your nervous system before your day begins.
-              </p>
-              {/* <p className="text-base opacity-90 md:text-lg">
-                No tracking. No pressure. Just presence.
-              </p>
-              <p className="text-base opacity-90 md:text-lg italic">
-                  Why “
-                  <span className="text-black dark:text-white">Chouz</span>
-                  ”?
-              </p>
-              <p className="text-base opacity-90 md:text-lg">
-                The Greek word resonates as it captures the feeling of staying with the morning — awake, warm, unhurried, before the day begins.
-              </p> */}
+            <p>
+              Chouz is a gentle morning ritual for wellness practitioners who want to feel emotionally prepared and grounded before they serve others.
+            </p>
+            <p>
+              After years of navigating client pressure, uncertainty, and self-directed work, I built Chouz as a way to begin my mornings with more steadiness — a practice I return to every day.
+            </p>
+            <p className="text-base opacity-90 text-lg md:text-xl">
+              Each morning for 7 days, you’ll receive a short, guided ritual designed to help you regulate your nervous system before your day begins.
+            </p>
+            {/* <p className="text-base opacity-90 md:text-lg">
+              No tracking. No pressure. Just presence.
+            </p>
+            <p className="text-base opacity-90 md:text-lg italic">
+                Why “
+                <span className="text-black dark:text-white">Chouz</span>
+                ”?
+            </p>
+            <p className="text-base opacity-90 md:text-lg">
+              The Greek word resonates as it captures the feeling of staying with the morning — awake, warm, unhurried, before the day begins.
+            </p> */}
             </div>
 
             {/* Sample of what a day’s email feels like */}
