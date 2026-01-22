@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import FooterSection from "@/components/homepage/footer";
 
@@ -6,6 +9,11 @@ export const metadata = {
 };
 
 export default function PrivacyTermsPage() {
+  useEffect(() => {
+    // Ensure privacy page always uses light theme
+    document.documentElement.classList.remove("dark");
+  }, []);
+
   return (
     <>
       <main className="min-h-screen bg-background-light px-6 py-16 text-sm text-muted-light dark:bg-background-dark dark:text-muted-dark">
