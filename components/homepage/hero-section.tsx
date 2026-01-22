@@ -160,16 +160,16 @@ export default function HeroSection() {
             <span className="material-symbols-outlined">block</span>
           </div>
           <h3 className="mb-4 text-xl font-serif text-zinc-900">This is not:</h3>
-          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700">
-            <li className="flex items-start gap-3">
+          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700 text-center md:text-left">
+            <li className="flex items-start gap-3 justify-center md:justify-start">
               {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
               <span>A productivity system</span>
             </li>
-            <li className="flex items-start gap-3">
+            <li className="flex items-start gap-3 justify-center md:justify-start">
               {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
               <span>A habit-streak or discipline challenge</span>
             </li>
-            <li className="flex items-start gap-3">
+            <li className="flex items-start gap-3 justify-center md:justify-start">
               {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
               <span>A replacement for your existing practices</span>
             </li>
