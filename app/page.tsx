@@ -1,5 +1,5 @@
 import FooterSection from "@/components/homepage/footer";
-import ForYouSection from "@/components/homepage/for-you-section";
+// import ForYouSection from "@/components/homepage/for-you-section";
 import HeroSection from "@/components/homepage/hero-section";
 import IntroVideoSection from "@/components/homepage/intro-video-section";
 import SevenMorningsSection from "@/components/homepage/seven-mornings-section";
