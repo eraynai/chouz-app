@@ -11,14 +11,14 @@ export default function PrivacyTermsPage() {
       <main className="min-h-screen bg-background-light px-6 py-16 text-sm text-muted-light dark:bg-background-dark dark:text-muted-dark">
         <div className="mx-auto max-w-3xl space-y-8">
         <header className="space-y-3">
-          <div className="flex items-center justify-between gap-4">
-            <h1 className="text-2xl font-serif font-medium">Privacy Policy &amp; Terms of Use</h1>
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
             <Link
               href="/"
               className="text-xs font-medium text-muted-light underline-offset-4 hover:underline dark:text-muted-dark"
             >
               ← Back to landing
             </Link>
+            <h1 className="text-2xl font-serif font-medium">Privacy Policy &amp; Terms of Use</h1>
           </div>
           <p className="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
             Effective date: January 22, 2026
