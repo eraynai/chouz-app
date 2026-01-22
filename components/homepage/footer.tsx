@@ -20,6 +20,40 @@ export default function FooterSection() {
           >
             Privacy &amp; Terms of Use
           </Link>
+          <a
+            href="https://www.instagram.com/chouz.app/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Chouz on Instagram"
+            className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-transparent text-muted-light transition-colors hover:border-primary hover:text-primary dark:text-muted-dark dark:hover:text-white"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="h-4 w-4"
+              aria-hidden="true"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="5"
+                ry="5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="4.2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+              <circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
