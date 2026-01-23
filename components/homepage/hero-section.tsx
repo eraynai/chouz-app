@@ -119,10 +119,10 @@ export default function HeroSection() {
             <h1 className="mb-8 text-balance text-center text-3xl font-serif font-medium leading-tight md:text-5xl">
               <span className="block">
                 A calmer way to begin — {" "}
-                <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
+                <span className="italic text-[var(--color-primary)]">before</span> the world needs you.
               </span>
               <span className="mt-2 text-balance block text-3xl leading-tight md:text-5xl">
-                So <span className="italic text-gray-400 dark:text-gray-500">you</span> can show up grounded for the people you support.
+                So <span className="italic text-[var(--color-primary)]">you</span> can show up grounded for the people you support.
               </span>
             </h1>
             <div className="space-y-6 text-lg font-light leading-relaxed text-muted-light dark:text-gray-400 md:text-xl">
