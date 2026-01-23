@@ -116,7 +116,7 @@ export default function HeroSection() {
         <div className="hero-overlay" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center md:text-left">
           <div className="animate-fade-in-up">
-            <h1 className="mb-8 text-balance text-center text-4xl font-serif font-medium leading-tight md:text-6xl">
+            <h1 className="mb-8 text-balance text-center text-3xl font-serif font-medium leading-tight md:text-5xl">
               <span className="block">
                 A calmer way to begin — {" "}
                 <span className="italic text-gray-400 dark:text-gray-500">before</span> the world needs you.
@@ -132,14 +132,14 @@ export default function HeroSection() {
     <section className="animate-fade-in">
       <div className="grid gap-8 md:grid-cols-2 md:gap-10">
         <div
-          className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-white animate-float md:p-10"
+          className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-colors duration-[2500ms] ease-in-out hover:shadow-lg dark:border-gray-700 dark:bg-[#06070a] animate-float md:p-10"
           style={{ animationDelay: "0.2s" }}
         >
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-500 ring-1 ring-amber-200/80 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-500/60">
             <span className="material-symbols-outlined text-xl">favorite_border</span>
           </div>
-          <h3 className="mb-4 text-xl font-serif text-zinc-900">This is for you if:</h3>
-          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700">
+          <h3 className="mb-4 text-xl font-serif text-zinc-900 dark:text-zinc-50">This is for you if:</h3>
+          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
             <li className="flex items-start gap-3">
               {/* <span className="mt-2 h-1 w-1 rounded-full bg-amber-400" /> */}
               <span>You make your own schedule — and carry responsibility for others</span>
@@ -155,12 +155,12 @@ export default function HeroSection() {
           </ul>
         </div>
 
-        <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-white md:p-10">
-          <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-100 dark:text-gray-600">
+        <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-colors duration-[2500ms] ease-in-out hover:shadow-lg dark:border-gray-700 dark:bg-[#06070a] md:p-10">
+          <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
             <span className="material-symbols-outlined">block</span>
           </div>
-          <h3 className="mb-4 text-xl font-serif text-zinc-900">This is not:</h3>
-          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700 text-center md:text-left">
+          <h3 className="mb-4 text-xl font-serif text-zinc-900 dark:text-zinc-50">This is not:</h3>
+          <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200 text-center md:text-left">
             <li className="flex items-start gap-3 justify-center md:justify-start">
               {/* <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400" /> */}
               <span>A productivity system</span>
