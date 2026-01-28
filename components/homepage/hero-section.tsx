@@ -52,7 +52,7 @@ export default function HeroSection() {
           page: "landing",
           path: "/",
         });
-      } catch (e) {
+      } catch {
         // analytics failures should never affect the experience
       }
 
@@ -260,7 +260,7 @@ export default function HeroSection() {
                     posthog.capture("landing_primary_cta_clicked", {
                       location: "hero",
                     });
-                  } catch (e) {}
+                  } catch {}
                 }}
               >
                 <span>Begin the 7-day Morning Path</span>
