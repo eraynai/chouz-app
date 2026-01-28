@@ -136,6 +136,11 @@
    Chouz landing experience layer
    =============================== */
 
+/* Vignette effect for greet page */
+.vignette {
+  background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.2) 100%);
+}
+
 /* Rounded CTA pill */
 .rounded-pill {
   border-radius: 9999px;
@@ -176,6 +181,16 @@
 
 .animate-fade-in {
   animation: fadeIn 900ms ease both;
+}
+
+/* Slow fade for screen transitions */
+@keyframes fadeInSlow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in-slow {
+  animation: fadeInSlow 1800ms ease both;
 }
 
 @keyframes fadeInUp {

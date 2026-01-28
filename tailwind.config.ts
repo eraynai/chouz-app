@@ -26,7 +26,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#18181b",
+          DEFAULT: "#2070df",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -62,7 +62,7 @@ const config = {
           5: "hsl(var(--chart-5))",
         },
         // Chouz-specific colors
-        "background-light": "#f8f9fa",
+        "background-light": "#fafbf8",
         "background-dark": "#0f0f13",
         "surface-light": "#ffffff",
         "surface-dark": "#18181b",
@@ -70,11 +70,12 @@ const config = {
         "text-dark": "#e4e4e7",
         "muted-light": "#52525b",
         "muted-dark": "#a1a1aa",
+        "charcoal": "#2C2C2C",
       },
       fontFamily: {
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         serif: ["Playfair Display", "Georgia", "serif"],
-        display: ["Fraunces", "Georgia", "serif"],
+        display: ["Newsreader", "Fraunces", "Georgia", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
