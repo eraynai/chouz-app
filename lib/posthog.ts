@@ -17,13 +17,13 @@ export function initPosthog() {
     defaults: "2025-11-30",
     // Capture all core web vitals (FCP, LCP, INP, CLS) with sensible defaults
     capture_performance: {
-      // keep PostHog's default of all 4 metrics
       web_vitals_allowed_metrics: ["LCP", "CLS", "FCP", "INP"],
-      // rely on SDK defaults for max value and flush delay unless we see issues
-      // __web_vitals_max_value: 15 * 60 * 1000,
-      // web_vitals_delayed_flush_ms: 5000,
     },
   });
+
+  // 👇 expose for DevTools debugging
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).posthog = posthog;
 
   initialized = true;
 }
