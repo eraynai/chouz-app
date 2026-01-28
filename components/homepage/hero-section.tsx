@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
+import { initPosthog, posthog } from "@/lib/posthog";
 
 function MoonSunIcon() {
   return (
@@ -43,6 +44,17 @@ export default function HeroSection() {
     useEffect(() => {
       const html = document.documentElement;
       let ticking = false;
+
+      // Initialize PostHog gently on the client and track a single landing view
+      initPosthog();
+      try {
+        posthog.capture("landing_viewed", {
+          page: "landing",
+          path: "/",
+        });
+      } catch (e) {
+        // analytics failures should never affect the experience
+      }
 
       const updateTheme = () => {
         const scrollY = window.scrollY;
@@ -232,6 +244,13 @@ export default function HeroSection() {
               <a
                 className="group relative inline-flex items-center justify-center rounded-pill bg-primary px-8 py-4 font-medium text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
                 href="#signup"
+                onClick={() => {
+                  try {
+                    posthog.capture("landing_primary_cta_clicked", {
+                      location: "hero",
+                    });
+                  } catch (e) {}
+                }}
               >
                 <span>Begin the 7-day Morning Path</span>
                 <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
