@@ -93,10 +93,10 @@ export default function GreetingPage() {
       <main className="relative flex h-screen w-full flex-col items-center justify-center p-8 bg-charcoal text-white vignette">
         <section className="mx-auto max-w-xl px-6 text-center">
           <p className="mb-4 text-2xl md:text-3xl font-display font-light">
-            We've already met today.
+            We’ve already met today.
           </p>
           <p className="mb-8 text-lg md:text-xl font-display italic font-extralight opacity-70">
-            I'll be here again tomorrow.
+            I’ll be here again tomorrow.
           </p>
           <button
             type="button"
@@ -181,7 +181,7 @@ export default function GreetingPage() {
 
         {isBypassed && (
           <p className="font-display italic text-xl md:text-2xl font-extralight leading-relaxed select-none opacity-70">
-            You're welcome to stay here quietly for a moment.
+            You’re welcome to stay here quietly for a moment.
           </p>
         )}
       </div>
