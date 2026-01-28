@@ -148,7 +148,18 @@ export default function HeroSection() {
           style={{ animationDelay: "0.2s" }}
         >
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-500 ring-1 ring-amber-200/80 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-500/60">
-            <span className="material-symbols-outlined text-xl">favorite_border</span>
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                d="M16.5 4.5c-1.74 0-3.41.81-4.5 2.09C10.91 5.31 9.24 4.5 7.5 4.5 4.42 4.5 2 6.92 2 10c0 3.86 3.4 6.63 8.55 11.28L12 22.35l1.45-1.32C18.6 16.63 22 13.86 22 10c0-3.08-2.42-5.5-5.5-5.5z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              />
+            </svg>
           </div>
           <h3 className="mb-4 text-xl font-serif text-zinc-900 dark:text-zinc-50">This is for you if:</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
