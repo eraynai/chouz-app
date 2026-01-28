@@ -13,9 +13,8 @@ export function initPosthog() {
 
   posthog.init(key, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
-    autocapture: false,
-    capture_pageview: false,
-    disable_session_recording: false,
+    // Use PostHog's recommended defaults so pageviews & basic web analytics work out of the box
+    defaults: "2025-11-30",
   });
 
   initialized = true;
