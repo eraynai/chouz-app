@@ -4,7 +4,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 // Mock updateMarketingConsent action
 const updateMarketingConsentMock = vi.fn();
 vi.mock("@/app/actions/update-marketing-consent", () => ({
-  updateMarketingConsent: (...args: any[]) => updateMarketingConsentMock(...args),
+  updateMarketingConsent: (...args: unknown[]) => updateMarketingConsentMock(...args),
 }));
 
 // Mock authClient magic link sign-in
@@ -12,7 +12,7 @@ const magicLinkMock = vi.fn().mockResolvedValue(undefined);
 vi.mock("@/lib/auth-client", () => ({
   authClient: {
     signIn: {
-      magicLink: (...args: any[]) => magicLinkMock(...args),
+      magicLink: (...args: unknown[]) => magicLinkMock(...args),
       social: vi.fn(),
     },
   },

@@ -10,7 +10,7 @@ const getSessionMock = vi.fn();
 vi.mock("@/lib/auth", () => ({
   auth: {
     api: {
-      getSession: (...args: any[]) => getSessionMock(...args),
+      getSession: (...args: unknown[]) => getSessionMock(...args),
     },
   },
 }));
@@ -19,7 +19,7 @@ const selectMock = vi.fn();
 
 vi.mock("@/db/drizzle", () => ({
   db: {
-    select: (...args: any[]) => selectMock(...args),
+    select: (...args: unknown[]) => selectMock(...args),
   },
 }));
 

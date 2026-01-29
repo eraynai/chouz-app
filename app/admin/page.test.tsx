@@ -6,7 +6,7 @@ const redirectMock = vi.fn();
 vi.mock("@/lib/auth", () => ({
   auth: {
     api: {
-      getSession: (...args: any[]) => getSessionMock(...args),
+      getSession: (...args: unknown[]) => getSessionMock(...args),
     },
   },
 }));
@@ -16,7 +16,7 @@ vi.mock("next/headers", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  redirect: (...args: any[]) => redirectMock(...args),
+  redirect: (...args: unknown[]) => redirectMock(...args),
 }));
 
 // Mock admin dashboard child components to avoid React/DOM requirements

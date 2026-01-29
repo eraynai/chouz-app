@@ -10,8 +10,8 @@ export const authTest = betterAuth({
   plugins: [
     magicLink({
       sendMagicLink: async ({ email, url }) => {
-        console.log('📧 Would send magic link to:', email);
-        console.log('🔗 URL:', url);
+        console.log("📧 Would send magic link to:", email);
+        console.log("🔗 URL:", url);
         // Don't actually send, just log
       },
     }),
@@ -19,4 +19,4 @@ export const authTest = betterAuth({
 });
 
 // Log what routes are available
-console.log('🧪 Test auth routes:', Object.keys((authTest as any).api || {}));
+console.log("🧪 Test auth routes:", Object.keys((authTest as { api?: Record<string, unknown> }).api || {}));

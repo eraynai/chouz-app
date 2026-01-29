@@ -83,7 +83,7 @@ export default function LocationOnboarding({
             Where are you waking up from today?
           </CardTitle>
           <CardDescription className="text-xs text-zinc-400">
-            A simple label like "Toronto, Canada" or "Lisbon". This lets your morning orb follow the sun where you are.
+            A simple label like &quot;Toronto, Canada&quot; or &quot;Lisbon&quot;. This lets your morning orb follow the sun where you are.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

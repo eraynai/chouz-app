@@ -1,7 +1,7 @@
 import { authTest } from "@/lib/auth-test";
 
 export const GET = async () => {
-  const api = (authTest as any).api || {};
+  const api = (authTest as { api?: Record<string, unknown> }).api || {};
   const routes = Object.keys(api);
   
   return Response.json({

@@ -49,7 +49,8 @@ export async function POST(request: Request) {
       );
     }
 
-    let { label, latitude, longitude } = body;
+    const { label } = body;
+    let { latitude, longitude } = body;
 
     // If coordinates weren't provided, try to geocode the label
     if (typeof latitude !== "number" || typeof longitude !== "number") {

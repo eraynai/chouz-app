@@ -67,7 +67,7 @@ function SignInContent() {
                     className="mt-1 h-4 w-4 rounded border-gray-300"
                   />
                   <label htmlFor="marketing" className="text-xs text-muted-foreground leading-relaxed">
-                    I'd like to receive updates about Chouz, including new features and wellness tips (optional)
+                    I&apos;d like to receive updates about Chouz, including new features and wellness tips (optional)
                   </label>
                 </div>
                 <Button
@@ -115,7 +115,7 @@ function SignInContent() {
                 <div>
                   <h3 className="font-medium text-lg">Check your email</h3>
                   <p className="text-sm text-muted-foreground mt-2">
-                    We've sent a sign-in link to <strong>{email}</strong>
+                    We&apos;ve sent a sign-in link to <strong>{email}</strong>
                   </p>
                   <p className="text-xs text-muted-foreground mt-2">
                     Click the link in the email to sign in. The link expires in 5 minutes.

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // @ts-ignore - accessing internal property for debugging
+    // @ts-expect-error - accessing internal property for debugging
     const routes = Object.keys(auth.api || {});
     
     return NextResponse.json({

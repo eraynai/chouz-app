@@ -37,7 +37,7 @@ export async function getTrialStatus(userId: string): Promise<TrialStatus> {
     daysRemaining,
     hasExpired,
     isDeveloper,
-    wakingLocationLabel: (userData as any).wakingLocationLabel ?? null,
+    wakingLocationLabel: (userData as { wakingLocationLabel?: string | null }).wakingLocationLabel ?? null,
   };
 }
 

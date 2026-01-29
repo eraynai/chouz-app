@@ -100,13 +100,15 @@ export const auth = betterAuth({
 
   plugins: [
     magicLink({
+      // `token` is part of the callback signature but not used here; keep it for compatibility
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       sendMagicLink: async ({ email, token, url }) => {
-        console.log('🔗 Magic link requested for:', email);
-        console.log('🔗 Magic link URL:', url);
+        console.log("🔗 Magic link requested for:", email);
+        console.log("🔗 Magic link URL:", url);
         
         if (!resend) {
-          console.error('❌ Resend not configured! Please add RESEND_API_KEY to .env.local');
-          throw new Error('Email service not configured');
+          console.error("❌ Resend not configured! Please add RESEND_API_KEY to .env.local");
+          throw new Error("Email service not configured");
         }
         
         try {

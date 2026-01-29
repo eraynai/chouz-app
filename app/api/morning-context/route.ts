@@ -23,9 +23,7 @@ function getWeatherKind(code: number | undefined): "clear" | "cloudy" | "rain" |
   return "other";
 }
 
-function buildSuggestion(kind: ReturnType<typeof getWeatherKind>, tempC: number | undefined) {
-  const roundedTemp = typeof tempC === "number" ? Math.round(tempC) : undefined;
-
+function buildSuggestion(kind: ReturnType<typeof getWeatherKind>) {
   switch (kind) {
     case "clear":
       return "It's clear out. If you can, open a window or step outside for a breath before your day begins.";
@@ -120,7 +118,7 @@ export async function GET(request: Request) {
     const code = weatherData.current_weather?.weathercode;
     const kind = getWeatherKind(code);
 
-    const suggestion = buildSuggestion(kind, tempC);
+    const suggestion = buildSuggestion(kind);
 
     return NextResponse.json(
       {
