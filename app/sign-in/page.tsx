@@ -1,5 +1,6 @@
 "use client";
 
+import { updateMarketingConsent } from "@/app/actions/update-marketing-consent";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,6 +20,7 @@ function SignInContent() {
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const searchParams = useSearchParams();
   const returnTo = searchParams.get("returnTo");
 
@@ -52,6 +54,18 @@ function SignInContent() {
                     disabled={loading}
                   />
                 </div>
+                <div className="flex items-start space-x-2">
+                  <input
+                    type="checkbox"
+                    id="marketing"
+                    checked={marketingConsent}
+                    onChange={(e) => setMarketingConsent(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300"
+                  />
+                  <label htmlFor="marketing" className="text-xs text-muted-foreground leading-relaxed">
+                    I'd like to receive updates about Chouz, including new features and wellness tips (optional)
+                  </label>
+                </div>
                 <Button
                   className="w-full"
                   disabled={loading || !email}
@@ -62,6 +76,8 @@ function SignInContent() {
                         email,
                         callbackURL: returnTo || "/greet",
                       });
+                      // Store marketing consent
+                      await updateMarketingConsent(email, marketingConsent);
                       setEmailSent(true);
                     } catch (error) {
                       console.error("Magic link error:", error);
@@ -128,7 +144,7 @@ function SignInContent() {
                     await authClient.signIn.social(
                       {
                         provider: "google",
-                        callbackURL: returnTo || "/dashboard",
+                        callbackURL: returnTo || "/greet",
                       },
                       {
                         onRequest: () => {

@@ -11,10 +11,10 @@ export async function middleware(request: NextRequest) {
   }
 
   if (sessionCookie && ["/sign-in", "/sign-up"].includes(pathname)) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
-  if (!sessionCookie && pathname.startsWith("/dashboard")) {
+  if (!sessionCookie && pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
@@ -27,5 +27,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/sign-in", "/sign-up", "/greet"],
+  matcher: ["/admin/:path*", "/sign-in", "/sign-up", "/greet"],
 };

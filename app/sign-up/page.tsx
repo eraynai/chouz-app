@@ -47,7 +47,7 @@ function SignInContent() {
                     await authClient.signIn.social(
                       {
                         provider: "google",
-                        callbackURL: returnTo || "/dashboard",
+                        callbackURL: returnTo || "/admin",
                       },
                       {
                         onRequest: () => {

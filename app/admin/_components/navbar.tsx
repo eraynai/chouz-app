@@ -25,7 +25,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
       <header className="flex h-14 lg:h-[52px] items-center gap-4 border-b px-3">
         <Dialog>
           <SheetTrigger className="min-[1024px]:hidden p-2 transition">
-            <Link prefetch={true} href="/dashboard">
+            <Link prefetch={true} href="/admin">
               <span className="sr-only">Home</span>
             </Link>
           </SheetTrigger>
@@ -37,7 +37,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
             </SheetHeader>
             <div className="flex flex-col space-y-3 mt-[1rem]">
               <DialogClose asChild>
-                <Link prefetch={true} href="/dashboard">
+                <Link prefetch={true} href="/admin">
                   <Button variant="outline" className="w-full">
                     <HomeIcon className="mr-2 h-4 w-4" />
                     Overview
@@ -45,7 +45,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link prefetch={true} href="/dashboard/create">
+                <Link prefetch={true} href="/admin/create">
                   <Button variant="outline" className="w-full">
                     <Brush className="mr-2 h-4 w-4" />
                     Create Pass
@@ -53,7 +53,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link prefetch={true} href="/dashboard/notifications">
+                <Link prefetch={true} href="/admin/notifications">
                   <Button variant="outline" className="w-full">
                     <MonitorSmartphone className="mr-2 h-4 w-4" />
                     Notifications
@@ -62,7 +62,7 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
               </DialogClose>
               <Separator className="my-3" />
               <DialogClose asChild>
-                <Link prefetch={true} href="/dashboard/analytics">
+                <Link prefetch={true} href="/admin/analytics">
                   <Button variant="outline" className="w-full">
                     <LucideGitBranchPlus className="mr-2 h-4 w-4" />
                     Analytics

@@ -41,7 +41,7 @@ export default function SuccessPage() {
           </div>
 
           <Button
-            onClick={() => router.push("/dashboard")}
+            onClick={() => router.push("/admin")}
             className="w-full text-white font-medium py-3"
             size="lg"
           >

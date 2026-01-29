@@ -117,13 +117,13 @@ export default function UserProfile({ mini }: { mini?: boolean }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href="/dashboard/settings?tab=profile">
+          <Link href="/admin/settings?tab=profile">
             <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
-          <Link href="/dashboard/settings?tab=billing">
+          <Link href="/admin/settings?tab=billing">
             <DropdownMenuItem>
               Billing
               <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>

@@ -18,6 +18,9 @@ export const user = pgTable("user", {
   // Trial tracking for greet app
   firstGreetingAccessDate: timestamp("firstGreetingAccessDate"),
   greetingDaysUsed: integer("greetingDaysUsed").default(0),
+  // Marketing consent
+  marketingConsent: boolean("marketingConsent").default(false),
+  marketingConsentDate: timestamp("marketingConsentDate"),
 });
 
 export const session = pgTable("session", {

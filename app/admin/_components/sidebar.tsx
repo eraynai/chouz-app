@@ -22,22 +22,22 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: "Overview",
-    href: "/dashboard",
+    href: "/admin",
     icon: HomeIcon,
   },
   {
     label: "Chat",
-    href: "/dashboard/chat",
+    href: "/admin/chat",
     icon: MessageCircleIcon,
   },
   {
     label: "Upload",
-    href: "/dashboard/upload",
+    href: "/admin/upload",
     icon: Upload,
   },
   {
     label: "Payment Gated",
-    href: "/dashboard/payment",
+    href: "/admin/payment",
     icon: Banknote,
   },
 ];
@@ -55,7 +55,7 @@ export default function DashboardSideBar() {
             className="flex items-center font-semibold hover:cursor-pointer"
             href="/"
           >
-            <span>Nextjs Starter Kit</span>
+            <span>Chouz Admin Dashboard</span>
           </Link>
         </div>
 
@@ -81,10 +81,10 @@ export default function DashboardSideBar() {
           <div className="flex flex-col gap-2 w-full">
             <div className="px-4">
               <div
-                onClick={() => router.push("/dashboard/settings")}
+                onClick={() => router.push("/admin/settings")}
                 className={clsx(
                   "flex items-center w-full gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:cursor-pointer",
-                  pathname === "/dashboard/settings"
+                  pathname === "/admin/settings"
                     ? "bg-primary/10 text-primary hover:bg-primary/20"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground",
                 )}

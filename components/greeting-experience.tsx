@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { TrialStatus } from "@/lib/trial";
+import { authClient } from "@/lib/auth-client";
 
 const STORAGE_KEY = "chouz_last_greeting_date";
 
@@ -101,7 +102,7 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
           <p className="mb-8 text-lg md:text-xl font-display italic font-extralight opacity-70">
             I'll be here again tomorrow.
           </p>
-          {trialStatus.isActive && (
+          {trialStatus.isActive && !trialStatus.isDeveloper && (
             <p className="mb-4 text-sm opacity-60">
               {trialStatus.daysRemaining} {trialStatus.daysRemaining === 1 ? 'day' : 'days'} remaining in your trial
             </p>
@@ -135,13 +136,34 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
             <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] font-display">Morning Companion</h2>
           </div>
           <div className="flex items-center gap-4">
-            {trialStatus.isActive && (
+            {trialStatus.isActive && !trialStatus.isDeveloper && (
               <span className="text-xs opacity-60">
                 Day {trialStatus.daysUsed + 1} of 3
               </span>
             )}
-            <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#edf3e8] text-[#141b0e] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-[#80df20]/20 transition-colors">
-              <span className="material-symbols-outlined text-[20px]">settings</span>
+            {trialStatus.isDeveloper && (
+              <a
+                href="/admin"
+                className="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#80df20] text-[#141b0e] gap-2 text-sm font-medium leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-[#80df20]/80 transition-colors"
+                title="Admin Dashboard"
+              >
+                <span className="text-xs">Admin</span>
+              </a>
+            )}
+            <button 
+              onClick={async () => {
+                await authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      window.location.href = "/sign-in";
+                    },
+                  },
+                });
+              }}
+              className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#edf3e8] text-[#141b0e] gap-2 text-sm font-normal leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-red-100 transition-colors"
+              title="Sign out"
+            >
+              <span className="text-xs">Sign out</span>
             </button>
           </div>
         </header>
@@ -202,7 +224,7 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
       </div>
 
       {/* Trial status indicator */}
-      {trialStatus.isActive && (
+      {trialStatus.isActive && !trialStatus.isDeveloper && (
         <div className="absolute top-8 right-8 text-xs opacity-50">
           Day {trialStatus.daysUsed + 1} of 3
         </div>
