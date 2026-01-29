@@ -13,6 +13,7 @@ export type TrialStatus = {
   daysRemaining: number;
   hasExpired: boolean;
   isDeveloper: boolean;
+  wakingLocationLabel?: string | null;
 };
 
 export async function getTrialStatus(userId: string): Promise<TrialStatus> {
@@ -36,6 +37,7 @@ export async function getTrialStatus(userId: string): Promise<TrialStatus> {
     daysRemaining,
     hasExpired,
     isDeveloper,
+    wakingLocationLabel: (userData as any).wakingLocationLabel ?? null,
   };
 }
 

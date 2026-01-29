@@ -2,6 +2,7 @@ import {
   boolean,
   integer,
   pgTable,
+  real,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
@@ -18,6 +19,10 @@ export const user = pgTable("user", {
   // Trial tracking for greet app
   firstGreetingAccessDate: timestamp("firstGreetingAccessDate"),
   greetingDaysUsed: integer("greetingDaysUsed").default(0),
+  // User's waking location (for sun-phase based greetings)
+  wakingLocationLabel: text("wakingLocationLabel"),
+  wakingLatitude: real("wakingLatitude"),
+  wakingLongitude: real("wakingLongitude"),
   // Marketing consent
   marketingConsent: boolean("marketingConsent").default(false),
   marketingConsentDate: timestamp("marketingConsentDate"),

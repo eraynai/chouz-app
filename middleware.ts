@@ -23,9 +23,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/sign-in?returnTo=/greet", request.url));
   }
 
+  // Protect onboarding routes - require authentication
+  if (!sessionCookie && pathname.startsWith("/onboarding")) {
+    return NextResponse.redirect(new URL("/sign-in?returnTo=/onboarding/location", request.url));
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/sign-in", "/sign-up", "/greet"],
+  matcher: ["/admin/:path*", "/sign-in", "/sign-up", "/greet", "/onboarding/:path*"],
 };

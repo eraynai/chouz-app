@@ -24,6 +24,10 @@ function SignInContent() {
   const searchParams = useSearchParams();
   const returnTo = searchParams.get("returnTo");
 
+  const onboardingCallback = returnTo
+    ? `/onboarding/location?returnTo=${encodeURIComponent(returnTo)}`
+    : "/onboarding/location";
+
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen">
       <Card className="max-w-md w-full">
@@ -74,7 +78,7 @@ function SignInContent() {
                     try {
                       await authClient.signIn.magicLink({
                         email,
-                        callbackURL: returnTo || "/greet",
+                        callbackURL: onboardingCallback,
                       });
                       // Store marketing consent
                       await updateMarketingConsent(email, marketingConsent);
@@ -144,7 +148,7 @@ function SignInContent() {
                     await authClient.signIn.social(
                       {
                         provider: "google",
-                        callbackURL: returnTo || "/greet",
+                        callbackURL: onboardingCallback,
                       },
                       {
                         onRequest: () => {
