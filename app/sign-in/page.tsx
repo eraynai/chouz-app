@@ -17,6 +17,8 @@ import { toast } from "sonner";
 
 function SignInContent() {
   const [loading, setLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState("");
   const searchParams = useSearchParams();
   const returnTo = searchParams.get("returnTo");
 
@@ -25,14 +27,92 @@ function SignInContent() {
       <Card className="max-w-md w-full">
         <CardHeader>
           <CardTitle className="text-lg md:text-xl">
-            Welcome to Elli
+            Welcome to Chouz
           </CardTitle>
           <CardDescription className="text-xs md:text-sm">
-            Use your google account to login to your account
+            Sign in with your email or Google account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
+            {/* Magic Link Sign-In */}
+            {!emailSent ? (
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="name@example.com"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    disabled={loading}
+                  />
+                </div>
+                <Button
+                  className="w-full"
+                  disabled={loading || !email}
+                  onClick={async () => {
+                    setLoading(true);
+                    try {
+                      await authClient.signIn.magicLink({
+                        email,
+                        callbackURL: returnTo || "/greet",
+                      });
+                      setEmailSent(true);
+                    } catch (error) {
+                      console.error("Magic link error:", error);
+                      toast.error("Failed to send magic link");
+                    } finally {
+                      setLoading(false);
+                    }
+                  }}
+                >
+                  {loading ? "Sending..." : "Send Magic Link"}
+                </Button>
+                
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center space-y-4 py-4">
+                <div className="text-green-600">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-medium text-lg">Check your email</h3>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    We've sent a sign-in link to <strong>{email}</strong>
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Click the link in the email to sign in. The link expires in 5 minutes.
+                  </p>
+                </div>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => {
+                    setEmailSent(false);
+                    setEmail("");
+                  }}
+                >
+                  Try a different email
+                </Button>
+              </div>
+            )}
             <div
               className={cn(
                 "w-full gap-2 flex items-center",

@@ -15,6 +15,9 @@ export const user = pgTable("user", {
   image: text("image"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  // Trial tracking for greet app
+  firstGreetingAccessDate: timestamp("firstGreetingAccessDate"),
+  greetingDaysUsed: integer("greetingDaysUsed").default(0),
 });
 
 export const session = pgTable("session", {

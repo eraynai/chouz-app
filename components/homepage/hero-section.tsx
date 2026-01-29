@@ -275,12 +275,12 @@ export default function HeroSection() {
             </div>
 
             <div className="mt-6 flex flex-col items-center gap-1 text-xs text-muted-light dark:text-gray-500">
-              <span>When you’re ready for the app, Chouz will greet you once each morning.</span>
+              <span>When you're ready, the Chouz app offers an enhanced experience with guided breathing and daily practices.</span>
               <a
                 href="/greet"
                 className="text-[0.7rem] underline underline-offset-4 hover:text-foreground"
               >
-                Visit the morning greeting (gentle preview)
+                Try the app (3 days free)
               </a>
             </div>
           </div>

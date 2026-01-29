@@ -18,9 +18,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
+  // Protect /greet route - require authentication
+  if (!sessionCookie && pathname.startsWith("/greet")) {
+    return NextResponse.redirect(new URL("/sign-in?returnTo=/greet", request.url));
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/sign-in", "/sign-up"],
+  matcher: ["/dashboard/:path*", "/sign-in", "/sign-up", "/greet"],
 };
