@@ -61,31 +61,6 @@ export default function SignupSection() {
         <p className="mb-8 text-muted-light dark:text-muted-dark">
           Join the free 7-morning journey.
         </p>
-
-        {/* <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
-          <div className="mb-4 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-light opacity-80 dark:text-muted-dark">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-            <span>The next morning begins in…</span>
-          </div>
-
-          <div className="mx-auto grid max-w-sm grid-cols-3 gap-2 text-center md:gap-4">
-            {[
-              { label: "Hours", value: countdown.hours },
-              { label: "Mins", value: countdown.minutes },
-              { label: "Secs", value: countdown.seconds },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center">
-                <span className="tabular-nums text-2xl font-serif font-medium tracking-tight text-primary dark:text-white md:text-3xl">
-                  {item.value}
-                </span>
-                <span className="mt-2 text-[10px] uppercase tracking-widest text-muted-light dark:text-gray-500">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
         <form
           className="space-y-4"
           onSubmit={async (e) => {
@@ -174,10 +149,10 @@ export default function SignupSection() {
         className="mt-16 border-t border-gray-300 pt-16 pb-20 dark:border-gray-700"
       >
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 font-light font-serif">
+          <h2 className="text-3xl mb-4 font-light font-serif">
             Continue with the full app experience
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 mx-auto">
             A personalized morning ritual that meets you where you are — foggy, on edge, or clear — and guides you to ground before your day begins.
           </p>
         </div>
