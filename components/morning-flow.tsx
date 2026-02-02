@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 
 // High-level states of the morning flow. These correspond to the diagram:
@@ -25,10 +23,6 @@ export default function MorningFlow() {
   const router = useRouter();
 
   const [step, setStep] = useState<FlowStep>("ARRIVE");
-  const [arrivalState, setArrivalState] = useState<ArrivalState | null>(null);
-
-  const [answerOne, setAnswerOne] = useState("");
-  const [answerTwo, setAnswerTwo] = useState("");
 
   // Per-branch response state (for future use / potential persistence)
   const [foggySelected, setFoggySelected] = useState<string[]>([]);
@@ -49,8 +43,6 @@ export default function MorningFlow() {
   const [submitting, setSubmitting] = useState(false);
 
   function handleSelectArrival(state: ArrivalState) {
-    setArrivalState(state);
-
     if (state === "foggy") {
       setStep("EXPLORE_FOGGY_Q1");
       return;
@@ -133,13 +125,6 @@ export default function MorningFlow() {
     const canContinue = foggySelected.length > 0 || foggyCustom.trim().length > 0;
 
     const handleNext = () => {
-      // Store a combined representation in answerOne for potential future use
-      setAnswerOne(
-        JSON.stringify({
-          selected: foggySelected,
-          customText: foggyCustom.trim(),
-        }),
-      );
       setStep("EXPLORE_FOGGY_Q2");
     };
 
@@ -149,7 +134,7 @@ export default function MorningFlow() {
           <div className="space-y-6">
             <h1 className="text-2xl leading-relaxed font-light font-display">Foggy is okay.</h1>
             <p className="text-zinc-500 text-lg leading-relaxed">
-              What's one thing you don't need to hold right now?
+              What&apos;s one thing you don&apos;t need to hold right now?
             </p>
           </div>
 
@@ -212,13 +197,6 @@ export default function MorningFlow() {
     };
 
     const handleContinue = () => {
-      // Store a combined representation in answerTwo for potential future use
-      setAnswerTwo(
-        JSON.stringify({
-          selected: foggyQ2Selected,
-          customText: foggyQ2Custom.trim(),
-        }),
-      );
       setStep("LAND_INTENTION");
     };
 
@@ -294,12 +272,6 @@ export default function MorningFlow() {
     const canContinue = onEdgeSelected.length > 0 || onEdgeCustom.trim().length > 0;
 
     const handleNext = () => {
-      setAnswerOne(
-        JSON.stringify({
-          selected: onEdgeSelected,
-          customText: onEdgeCustom.trim(),
-        }),
-      );
       setStep("EXPLORE_ONEDGE_Q2");
     };
 
@@ -374,12 +346,6 @@ export default function MorningFlow() {
     };
 
     const handleContinue = () => {
-      setAnswerTwo(
-        JSON.stringify({
-          selected: onEdgeQ2Selected,
-          customText: onEdgeQ2Custom.trim(),
-        }),
-      );
       setStep("LAND_INTENTION");
     };
 
@@ -455,12 +421,6 @@ export default function MorningFlow() {
     const canContinue = neutralSelected.length > 0 || neutralCustom.trim().length > 0;
 
     const handleNext = () => {
-      setAnswerOne(
-        JSON.stringify({
-          selected: neutralSelected,
-          customText: neutralCustom.trim(),
-        }),
-      );
       setStep("EXPLORE_NEUTRAL_Q2");
     };
 
@@ -535,12 +495,6 @@ export default function MorningFlow() {
     };
 
     const handleContinue = () => {
-      setAnswerTwo(
-        JSON.stringify({
-          selected: neutralQ2Selected,
-          customText: neutralQ2Custom.trim(),
-        }),
-      );
       setStep("LAND_INTENTION");
     };
 
@@ -707,64 +661,4 @@ export default function MorningFlow() {
     default:
       return renderArrival();
   }
-}
-
-interface QuestionScreenProps {
-  title: string;
-  description: string;
-  value: string;
-  onChange: (value: string) => void;
-  onNext: () => void;
-  nextLabel?: string;
-  optional?: boolean;
-}
-
-function QuestionScreen({
-  title,
-  description,
-  value,
-  onChange,
-  onNext,
-  nextLabel = "Next",
-  optional = false,
-}: QuestionScreenProps) {
-  const canContinue = optional || value.trim().length > 0;
-
-  return (
-    <div className="flex h-screen w-full items-center justify-center bg-charcoal text-white px-4">
-      <Card className="w-full max-w-md bg-zinc-950 border-zinc-800">
-        <CardHeader>
-          <CardTitle className="text-lg font-light font-display">
-            {title}
-          </CardTitle>
-          <CardDescription className="text-xs text-zinc-400">
-            {description}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Textarea
-            rows={3}
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            className="bg-zinc-900 border-zinc-700 text-sm resize-none"
-          />
-          <div className="pt-2 flex flex-col gap-2">
-            <Button
-              type="button"
-              className="w-full rounded-full text-xs tracking-[0.2em] uppercase"
-              disabled={!canContinue}
-              onClick={onNext}
-            >
-              {nextLabel}
-            </Button>
-            {optional && (
-              <p className="text-[11px] text-zinc-500 text-center">
-                You can also leave this blank and continue.
-              </p>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
 }

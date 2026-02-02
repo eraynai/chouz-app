@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { TrialStatus } from "@/lib/trial";
-import { authClient } from "@/lib/auth-client";
 
 const STORAGE_KEY = "chouz_last_greeting_date";
 
@@ -294,6 +293,7 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
                 className="animate-pulse-slow absolute w-full h-full rounded-full"
                 style={{
                   background: `radial-gradient(circle, ${haloColor}20, transparent 70%)`,
+                  opacity: haloOpacity,
                   animationDuration: `${pulseDuration + 1.5}s`,
                 }}
               />
