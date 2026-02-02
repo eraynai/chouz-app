@@ -180,7 +180,29 @@ export default function HeroSection() {
 
                 <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-colors duration-[2500ms] ease-in-out hover:shadow-lg dark:border-gray-700 dark:bg-[#06070a] md:p-10">
                   <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
-                    <span className="material-symbols-outlined">block</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="8.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                      <line
+                        x1="8.5"
+                        y1="8.5"
+                        x2="15.5"
+                        y2="15.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
                   </div>
                   <h3 className="mb-4 text-xl font-serif text-zinc-900 dark:text-zinc-50">This is not:</h3>
                   <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200 text-center md:text-left">
