@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { initPosthog, posthog } from "@/lib/posthog";
+import { authClient } from "@/lib/auth-client";
 
 function MoonSunIcon() {
   return (
@@ -41,6 +42,8 @@ function MoonSunIcon() {
 }
 
 export default function HeroSection() {
+    const { data: session } = authClient.useSession();
+
     useEffect(() => {
       const html = document.documentElement;
       let ticking = false;
@@ -120,6 +123,33 @@ export default function HeroSection() {
             >
               chouz
             </Link>
+          </div>
+
+          <div className="flex items-center gap-3 text-sm">
+            {session ? (
+              <button
+                type="button"
+                onClick={async () => {
+                  await authClient.signOut({
+                    fetchOptions: {
+                      onSuccess: () => {
+                        window.location.href = "/";
+                      },
+                    },
+                  });
+                }}
+                className="rounded-full border border-zinc-300 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-zinc-700 hover:border-zinc-900 hover:text-zinc-900 transition-colors dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-300 dark:hover:text-zinc-50"
+              >
+                Sign out
+              </button>
+            ) : (
+              <Link
+                href="/sign-in"
+                className="rounded-full border border-zinc-300 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-zinc-700 hover:border-zinc-900 hover:text-zinc-900 transition-colors dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-300 dark:hover:text-zinc-50"
+              >
+                Sign in
+              </Link>
+            )}
           </div>
         </div>
       </nav>
@@ -294,16 +324,6 @@ export default function HeroSection() {
               <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
                 Delivered by email. No credit card required.
               </p>
-            </div>
-
-            <div className="mt-6 flex flex-col items-center gap-1 text-xs text-muted-light dark:text-gray-500">
-              <span>When you&apos;re ready, the Chouz app offers an enhanced experience with guided breathing and daily practices.</span>
-              <a
-                href="/greet"
-                className="text-[0.7rem] underline underline-offset-4 hover:text-foreground"
-              >
-                Try the app (3 days free)
-              </a>
             </div>
           </div>
 

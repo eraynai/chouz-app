@@ -167,6 +167,96 @@ export default function SignupSection() {
           No spam. Just calm.
         </p>
       </div>
+
+      {/* App Experience Section */}
+      <div className="mt-16 border-t border-gray-300 pt-16 pb-20 dark:border-gray-700">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl mb-4 font-light font-serif">
+            Continue with the full app experience
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            A personalized morning ritual that meets you where you are — foggy, on edge, or clear — and guides you to ground before your day begins.
+          </p>
+        </div>
+
+        {/* App Features */}
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
+          {/* Arrive state card */}
+          <div className="text-center">
+            <div className="bg-[#0f0f0f] rounded-2xl p-6 mb-4 h-64 flex items-center justify-center relative overflow-hidden dark:bg-black">
+              <div className="text-white/80 text-sm space-y-3 text-left w-full max-w-[220px]">
+                <div className="text-xs text-white/40 mb-4 uppercase tracking-[0.16em]">
+                  How are you arriving?
+                </div>
+                <div className="border-b border-white/20 pb-2 text-sm hover:border-white/40 transition-colors cursor-pointer">
+                  foggy
+                </div>
+                <div className="border-b border-white/20 pb-2 text-sm hover:border-white/40 transition-colors cursor-pointer">
+                  on edge
+                </div>
+                <div className="border-b border-white/20 pb-2 text-sm hover:border-white/40 transition-colors cursor-pointer">
+                  neutral / clear
+                </div>
+              </div>
+            </div>
+            <h4 className="font-medium mb-2 text-lg">How are you arriving?</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Start by naming your emotional state.
+            </p>
+          </div>
+
+          {/* Guided reflection card */}
+          <div className="text-center">
+            <div className="bg-[#0f0f0f] rounded-2xl p-6 mb-4 h-64 flex flex-col items-center justify-center dark:bg-black">
+              <div className="text-white/60 text-xs mb-6 max-w-[220px] text-center leading-relaxed">
+                What part of the fog feels heaviest right now?
+              </div>
+              <div className="w-full max-w-[220px] space-y-3">
+                <div className="border-b border-white/20 pb-2 text-xs text-white/40 text-left">
+                  your response here
+                </div>
+              </div>
+            </div>
+            <h4 className="font-medium mb-2 text-lg">Guided reflection</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Questions adapt to your morning state.
+            </p>
+          </div>
+
+          {/* Breathing meditation card */}
+          <div className="text-center">
+            <div className="bg-[#0f0f0f] rounded-2xl p-6 mb-4 h-64 flex items-center justify-center relative dark:bg-black">
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Outer glow ring */}
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 animate-pulse absolute" />
+                {/* Middle ring */}
+                <div
+                  className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-300/30 to-purple-300/30 animate-pulse absolute"
+                  style={{ animationDelay: "0.5s" }}
+                />
+                {/* Inner orb */}
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-200 to-purple-200 animate-pulse shadow-lg shadow-blue-300/50" />
+              </div>
+              <div className="absolute bottom-8 text-blue-200/60 text-xs">
+                breathe in... breathe out...
+              </div>
+            </div>
+            <h4 className="font-medium mb-2 text-lg">Breathing meditation</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Ground yourself before you begin.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <a
+            href="/greet"
+            className="inline-flex items-center justify-center rounded-full bg-[#2c2c2c] px-10 py-4 text-lg text-white hover:bg-[#3c3c3c] transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-100"
+          >
+            Try the app now
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

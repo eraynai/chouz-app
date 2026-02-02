@@ -128,7 +128,19 @@ export default function LocationOnboarding({
           disabled={loading || !label.trim()}
           className="w-full bg-transparent text-white py-4 rounded-none border-t border-zinc-800 hover:bg-white/5 disabled:text-zinc-700 disabled:hover:bg-transparent"
         >
-          {label.trim() ? (loading ? "Saving…" : "Continue") : "—"}
+          {label.trim() ? (
+            loading ? (
+              <span className="inline-flex items-center justify-center gap-2">
+                {/* Simple inline spinner without importing InlineLoading here to keep this component light */}
+                <span className="w-4 h-4 border-2 border-white/20 border-t-white/70 rounded-full animate-spin" />
+                <span>Saving…</span>
+              </span>
+            ) : (
+              <span>Continue</span>
+            )
+          ) : (
+            "—"
+          )}
         </Button>
         <button
           type="button"

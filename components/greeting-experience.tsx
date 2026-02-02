@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { TrialStatus } from "@/lib/trial";
+import { authClient } from "@/lib/auth-client";
 
 const STORAGE_KEY = "chouz_last_greeting_date";
 
@@ -235,11 +236,28 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
           >
             {trialStatus.wakingLocationLabel || "chouz"}
           </button>
-          {trialStatus.isActive && !trialStatus.isDeveloper && (
-            <div className="text-xs text-zinc-500">
-              Day {trialStatus.daysUsed + 1} of 3
-            </div>
-          )}
+          <div className="flex items-center gap-3 text-xs text-zinc-500">
+            {trialStatus.isActive && !trialStatus.isDeveloper && (
+              <span>
+                Day {trialStatus.daysUsed + 1} of 3
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={async () => {
+                await authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      window.location.href = "/sign-in";
+                    },
+                  },
+                });
+              }}
+              className="rounded-full border border-zinc-700 px-3 py-1 text-[11px] uppercase tracking-[0.16em] hover:border-zinc-400 hover:text-zinc-200 transition-colors"
+            >
+              Sign out
+            </button>
+          </div>
         </div>
 
         {/* Main Content */}
@@ -367,12 +385,29 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
         )}
       </div>
 
-      {/* Trial status indicator */}
-      {trialStatus.isActive && !trialStatus.isDeveloper && (
-        <div className="absolute top-8 right-8 text-xs opacity-50">
-          Day {trialStatus.daysUsed + 1} of 3
-        </div>
-      )}
+      {/* Trial status indicator + sign out */}
+      <div className="absolute top-8 right-8 flex items-center gap-3 text-xs opacity-80">
+        {trialStatus.isActive && !trialStatus.isDeveloper && (
+          <span>
+            Day {trialStatus.daysUsed + 1} of 3
+          </span>
+        )}
+        <button
+          type="button"
+          onClick={async () => {
+            await authClient.signOut({
+              fetchOptions: {
+                onSuccess: () => {
+                  window.location.href = "/";
+                },
+              },
+            });
+          }}
+          className="rounded-full border border-white/30 px-3 py-1 text-[11px] uppercase tracking-[0.16em] hover:border-white hover:text-white transition-colors"
+        >
+          Sign out
+        </button>
+      </div>
 
       {/* Begin Button positioned at bottom */}
       <div className="absolute bottom-16 md:bottom-24 w-full flex justify-center px-4">

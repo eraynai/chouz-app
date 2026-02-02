@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
+import InlineLoading from "@/components/InlineLoading";
 
 // High-level states of the morning flow. These correspond to the diagram:
 // ARRIVE -> one of the EXPLORE_* branches -> LAND_INTENTION.
@@ -41,6 +42,7 @@ export default function MorningFlow() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [customWord, setCustomWord] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   function handleSelectArrival(state: ArrivalState) {
     if (state === "foggy") {
@@ -63,6 +65,7 @@ export default function MorningFlow() {
     if (!word) return;
 
     setSubmitting(true);
+    setIsTransitioning(true);
     try {
       // In the future we could POST this conversation to an API route so it can
       // show up in history or gently inform future prompts.
@@ -72,7 +75,11 @@ export default function MorningFlow() {
       // visit came after the morning flow.
       router.push("/greet?fromMorning=1");
     } finally {
-      setSubmitting(false);
+      // Keep the transition state for a brief moment so the loader is perceptible
+      setTimeout(() => {
+        setSubmitting(false);
+        setIsTransitioning(false);
+      }, 400);
     }
   }
 
@@ -164,7 +171,7 @@ export default function MorningFlow() {
             onChange={(e) => setFoggyCustom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -238,7 +245,7 @@ export default function MorningFlow() {
             onChange={(e) => setFoggyQ2Custom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -313,7 +320,7 @@ export default function MorningFlow() {
             onChange={(e) => setOnEdgeCustom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -387,7 +394,7 @@ export default function MorningFlow() {
             onChange={(e) => setOnEdgeQ2Custom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -462,7 +469,7 @@ export default function MorningFlow() {
             onChange={(e) => setNeutralCustom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -536,7 +543,7 @@ export default function MorningFlow() {
             onChange={(e) => setNeutralQ2Custom(e.target.value)}
             placeholder="Or write your own..."
             rows={2}
-            className="bg-transparent border-b border-zinc-800 px-0 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
+            className="bg-transparent border-b border-zinc-800 px-4 py-4 text-lg placeholder-zinc-700 focus-visible:ring-0 focus-visible:border-zinc-600 resize-none"
           />
         </div>
 
@@ -554,6 +561,21 @@ export default function MorningFlow() {
   }
 
   function renderLandIntention() {
+    if (isTransitioning) {
+      return (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-charcoal text-white">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="relative flex items-center justify-center">
+              <div className="w-6 h-6 rounded-full bg-[#f59e0b]/60 animate-pulse" />
+              <div className="absolute -inset-4 rounded-full border border-[#f59e0b]/20 animate-ping" />
+            </div>
+            <p className="text-sm text-zinc-400 lowercase tracking-[0.16em]">
+              arriving at your morning…
+            </p>
+          </div>
+        </div>
+      );
+    }
     const words = ["Soft", "Steady", "Open", "Brave", "Gentle", "Rooted"] as const;
 
     const isCustom = selectedWord === "custom";
@@ -634,7 +656,18 @@ export default function MorningFlow() {
             disabled={!canContinue || submitting}
             className="w-full text-white py-4 text-base disabled:text-zinc-700 hover:text-zinc-200 active:text-zinc-300"
           >
-            {canContinue ? (submitting ? "Arriving…" : "Complete my morning") : "—"}
+            {canContinue ? (
+              submitting ? (
+                <span className="inline-flex items-center justify-center gap-2">
+                  <InlineLoading variant="spinner" size="md" />
+                  <span>Arriving…</span>
+                </span>
+              ) : (
+                <span>Complete my morning</span>
+              )
+            ) : (
+              "—"
+            )}
           </button>
         </div>
       </div>
