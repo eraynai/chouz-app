@@ -1,10 +1,17 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { getTrialStatus, initializeTrialIfNeeded, incrementDayUsedIfNeeded } from "@/lib/trial";
 import GreetingExperience from "@/components/greeting-experience";
 import TrialExpired from "@/components/trial-expired";
 
-export default async function GreetingPage() {
+interface SearchParamsProps {
+  searchParams: Promise<{
+    fromMorning?: string;
+  }>;
+}
+
+export default async function GreetingPage({ searchParams }: SearchParamsProps) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -20,6 +27,8 @@ export default async function GreetingPage() {
 
   const userId = session.user.id;
 
+  const params = await searchParams;
+
   // Initialize trial if this is their first visit
   await initializeTrialIfNeeded(userId);
 
@@ -28,6 +37,12 @@ export default async function GreetingPage() {
 
   // Get current trial status
   const trialStatus = await getTrialStatus(userId);
+
+  // For developer accounts, always go through the morning flow before greeting
+  // unless we've just arrived here from that flow (indicated by fromMorning=1).
+  if (trialStatus.isDeveloper && params.fromMorning !== "1") {
+    redirect("/onboarding/morning");
+  }
 
   // If trial has expired, show paywall
   if (trialStatus.hasExpired) {

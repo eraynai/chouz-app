@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -26,6 +25,8 @@ export default function LocationOnboarding({
   const [longitude, setLongitude] = useState<number | null>(initialLongitude);
   const [loading, setLoading] = useState(false);
   const [geoError, setGeoError] = useState<string | null>(null);
+
+  const hasPreciseCoords = typeof latitude === "number" && typeof longitude === "number";
 
   async function handleSave() {
     if (!label.trim()) return;
@@ -76,73 +77,67 @@ export default function LocationOnboarding({
   }
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-charcoal text-white px-4">
-      <Card className="w-full max-w-md bg-zinc-950 border-zinc-800">
-        <CardHeader>
-          <CardTitle className="text-lg font-light font-display">
-            Where are you waking up from today?
-          </CardTitle>
-          <CardDescription className="text-xs text-zinc-400">
-            A simple label like &quot;Toronto, Canada&quot; or &quot;Lisbon&quot;. This lets your morning orb follow the sun where you are.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="location-label" className="text-xs uppercase tracking-[0.16em] text-zinc-400">
-              Location label
-            </Label>
-            <Input
-              id="location-label"
-              value={label}
-              onChange={(e) => {
-                setLabel(e.target.value);
-                // Clear any previously stored coordinates so a new city name
-                // triggers fresh geocoding on the backend instead of reusing
-                // old lat/lon.
-                setLatitude(null);
-                setLongitude(null);
-              }}
-              placeholder="Toronto, Canada"
-              className="bg-zinc-900 border-zinc-700 text-sm"
-            />
-          </div>
+    <div className="min-h-screen flex flex-col p-8 max-w-md mx-auto bg-charcoal text-white">
+      <div className="flex-1 flex flex-col justify-center space-y-12">
+        <h1 className="text-2xl leading-relaxed font-light font-display">
+          Where are you waking up from today?
+        </h1>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label className="text-xs uppercase tracking-[0.16em] text-zinc-400">
-                Make it more precise (optional)
-              </Label>
-              <button
-                type="button"
-                onClick={requestGeolocation}
-                className="text-[11px] underline underline-offset-4 text-zinc-300 hover:text-white"
-              >
-                Use my current location
-              </button>
-            </div>
-            {geoError && (
-              <p className="text-[11px] text-zinc-400 mt-1">{geoError}</p>
-            )}
-          </div>
+        <div className="flex flex-col space-y-2">
+          <Label
+            htmlFor="location-label"
+            className="text-[11px] uppercase tracking-[0.16em] text-zinc-400"
+          >
+            Location label
+          </Label>
+          <Input
+            id="location-label"
+            type="text"
+            value={label}
+            onChange={(e) => {
+              setLabel(e.target.value);
+              // Clear any previously stored coordinates so a new city name
+              // triggers fresh geocoding on the backend instead of reusing
+              // old lat/lon.
+              setLatitude(null);
+              setLongitude(null);
+            }}
+            placeholder="Toronto, Canada"
+            className="bg-transparent border-b border-zinc-700 rounded-none px-0 py-4 text-lg placeholder-zinc-600 focus-visible:ring-0 focus-visible:border-zinc-500"
+          />
+        </div>
 
-          <div className="flex flex-col gap-2 pt-2">
-            <Button
-              className="w-full rounded-full text-xs tracking-[0.2em] uppercase"
-              disabled={loading || !label.trim()}
-              onClick={handleSave}
-            >
-              {loading ? "Saving…" : "Continue"}
-            </Button>
-            <button
-              type="button"
-              className="w-full text-xs text-zinc-400 underline underline-offset-4 hover:text-zinc-100"
-              onClick={() => router.push(returnTo || "/greet")}
-            >
-              Skip for now
-            </button>
-          </div>
-        </CardContent>
-      </Card>
+        <div className="space-y-1">
+          <button
+            type="button"
+            onClick={requestGeolocation}
+            className="text-zinc-500 text-left text-sm hover:text-zinc-300"
+          >
+            {hasPreciseCoords ? "✓ Using precise location" : "Use my current location"}
+          </button>
+          {geoError && (
+            <p className="text-[11px] text-zinc-400 mt-1">{geoError}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="space-y-4 pb-8">
+        <Button
+          type="button"
+          onClick={handleSave}
+          disabled={loading || !label.trim()}
+          className="w-full bg-transparent text-white py-4 rounded-none border-t border-zinc-800 hover:bg-white/5 disabled:text-zinc-700 disabled:hover:bg-transparent"
+        >
+          {label.trim() ? (loading ? "Saving…" : "Continue") : "—"}
+        </Button>
+        <button
+          type="button"
+          onClick={() => router.push(returnTo || "/greet")}
+          className="w-full text-zinc-600 py-4 text-sm hover:text-zinc-400"
+        >
+          Skip
+        </button>
+      </div>
     </div>
   );
 }

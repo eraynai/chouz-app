@@ -91,6 +91,14 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // As a developer, always see the full "first" greeting experience and
+    // ignore the once-per-day boundary based on localStorage.
+    if (trialStatus.isDeveloper) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      setMode("first");
+      return;
+    }
+
     const today = getTodayKey();
     const last = window.localStorage.getItem(STORAGE_KEY);
 
@@ -100,7 +108,7 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
       window.localStorage.setItem(STORAGE_KEY, today);
       setMode("first");
     }
-  }, []);
+  }, [trialStatus.isDeveloper]);
 
   // Fetch morning context (location + weather-based suggestion)
   useEffect(() => {
@@ -216,167 +224,120 @@ export default function GreetingExperience({ trialStatus }: GreetingExperiencePr
     const pulseDuration = 3.5 - 1.5 * sunIntensity; // seconds, 2.0–3.5 roughly
 
     return (
-      <div className="relative flex h-screen w-full flex-col overflow-x-hidden bg-[#fafbf8] text-[#141b0e] animate-fade-in-slow">
-        {/* Top Navigation Bar */}
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#edf3e8] px-10 py-3 mx-auto w-full max-w-[960px]">
-          <div className="flex items-center gap-4 text-[#141b0e]">
-            <div className="size-4 text-[#80df20]">
-              <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"></path>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] font-display">Morning Companion</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  window.location.href = "/onboarding/location?mode=edit&returnTo=/greet";
-                }}
-                className="text-[11px] text-[#6b7a4f] underline underline-offset-4 mt-0.5 self-start hover:text-[#4b5a36]"
-              >
-                {trialStatus.wakingLocationLabel
-                  ? `Waking up from ${trialStatus.wakingLocationLabel}`
-                  : "Set your location"}
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            {trialStatus.isActive && !trialStatus.isDeveloper && (
-              <span className="text-xs opacity-60">
-                Day {trialStatus.daysUsed + 1} of 3
-              </span>
-            )}
-            {trialStatus.isDeveloper && (
-              <a
-                href="/admin"
-                className="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#80df20] text-[#141b0e] gap-2 text-sm font-medium leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-[#80df20]/80 transition-colors"
-                title="Admin Dashboard"
-              >
-                <span className="text-xs">Admin</span>
-              </a>
-            )}
-            <button 
-              onClick={async () => {
-                await authClient.signOut({
-                  fetchOptions: {
-                    onSuccess: () => {
-                      window.location.href = "/sign-in";
-                    },
-                  },
-                });
-              }}
-              className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#edf3e8] text-[#141b0e] gap-2 text-sm font-normal leading-normal tracking-[0.015em] min-w-0 px-3 hover:bg-red-100 transition-colors"
-              title="Sign out"
-            >
-              <span className="text-xs">Sign out</span>
-            </button>
-          </div>
-        </header>
-
-        {/* Main Content Area */}
-        <main className="flex flex-1 flex-col items-center justify-center px-6 py-10 relative">
-          {/* Headline Text */}
-          <div className="layout-content-container flex flex-col max-w-[640px] w-full text-center z-10">
-            <h2 className="text-[#141b0e] tracking-tight text-[28px] md:text-[32px] font-light leading-[1.6] px-4 pb-4 transition-opacity duration-1000">
-              Notice the weight of your body where you are sitting. <br /> Take one breath that is just for you.
-            </h2>
-
-            {/* Weather-aware suggestion (soft, optional layer) */}
-            {morningContext?.suggestion && !contextLoading && (
-              <p className="mt-2 text-sm md:text-base text-[#4a5a36] font-normal leading-relaxed px-6 opacity-80">
-                {(() => {
-                  const parts: string[] = [];
-                  const loc = morningContext.location;
-
-                  if (loc?.city) {
-                    parts.push(loc.city);
-                  }
-                  if (!loc?.city && loc?.region) {
-                    parts.push(loc.region);
-                  }
-                  if (loc?.country) {
-                    parts.push(loc.country);
-                  }
-
-                  const place = parts.length ? parts.join(", ") : null;
-                  const temp =
-                    typeof morningContext.weather?.temperatureC === "number"
-                      ? `${Math.round(morningContext.weather.temperatureC)}°C`
-                      : null;
-
-                  if (place && temp) {
-                    return `${morningContext.suggestion} Right now it's about ${temp} in ${place}.`;
-                  }
-
-                  if (place) {
-                    return `${morningContext.suggestion} You are somewhere around ${place} this morning.`;
-                  }
-
-                  if (temp) {
-                    return `${morningContext.suggestion} It's about ${temp} where you are.`;
-                  }
-
-                  return morningContext.suggestion;
-                })()}
-              </p>
-            )}
-          </div>
-
-          {/* Breathing Orb (The Practice) */}
-          <div className="relative flex items-center justify-center w-full h-64 md:h-80 mb-12">
-            {/* Core sun (more solid, slightly larger) */}
-            <div
-              className="animate-pulse-slow absolute w-40 h-40 md:w-48 md:h-48 rounded-full shadow-[0_0_45px_rgba(255,255,255,0.9)]"
-              style={{
-                backgroundColor: coreColor,
-                transform: `scale(${coreScale})`,
-                opacity: coreOpacity,
-                animationDuration: `${pulseDuration}s`,
-              }}
-            />
-            {/* Inner glow (less blur, tighter) */}
-            <div
-              className="animate-pulse-slow absolute w-52 h-52 md:w-64 md:h-64 rounded-full blur-[40px]"
-              style={{
-                animationDelay: "-0.6s",
-                backgroundColor: innerColor,
-                opacity: innerOpacity,
-                animationDuration: `${pulseDuration + 1}s`,
-              }}
-            />
-            {/* Outer halo (reduced blur so edge is more present) */}
-            <div
-              className="animate-pulse-slow absolute w-68 h-68 md:w-[22rem] md:h-[22rem] rounded-full blur-[60px]"
-              style={{
-                animationDelay: "-1.2s",
-                backgroundColor: haloColor,
-                opacity: haloOpacity,
-                animationDuration: `${pulseDuration + 1.5}s`,
-              }}
-            />
-          </div>
-
-          {/* Subtle sun-phase indicator */}
-          {sunPhase && (
-            <div className="flex flex-col items-center mb-6 space-y-1">
-              <p className="text-[11px] text-[#9ca37a] tracking-[0.18em] uppercase">
-                Sun where you are: {sunPhase.phase?.replace(/-/g, " ") ?? "unknown"}
-              </p>
-              <p className="text-[11px] text-[#a2ad84]">
-                Altitude: {typeof sunPhase.altitudeDeg === "number" ? sunPhase.altitudeDeg.toFixed(1) + "°" : "N/A"}
-              </p>
+      <div className="min-h-screen flex flex-col p-8 max-w-md mx-auto bg-charcoal text-white animate-fade-in-slow">
+        {/* Header */}
+        <div className="flex justify-between items-center py-6">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.href = "/onboarding/location?mode=edit&returnTo=/greet";
+            }}
+            className="text-sm text-zinc-200 hover:text-white text-left max-w-[60%] truncate"
+          >
+            {trialStatus.wakingLocationLabel || "chouz"}
+          </button>
+          {trialStatus.isActive && !trialStatus.isDeveloper && (
+            <div className="text-xs text-zinc-500">
+              Day {trialStatus.daysUsed + 1} of 3
             </div>
           )}
+        </div>
 
-          {/* Footer / Interaction */}
-          <div className="mt-auto pb-10 flex flex-col items-center">
-            <button className="group flex flex-col items-center gap-2">
-              <p className="text-[#739550] text-base font-normal leading-normal px-4 text-center underline underline-offset-8 decoration-1 hover:decoration-2 transition-all duration-300">
-                I am here
-              </p>
-            </button>
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col justify-center space-y-16">
+          <h1 className="text-2xl leading-relaxed font-light font-display">
+            Notice the weight of your body where you are sitting.
+            <br />
+            <br />
+            Take one breath that is just for you.
+          </h1>
+
+          {/* Optional context suggestion */}
+          {morningContext?.suggestion && !contextLoading && (
+            <p className="text-sm text-zinc-400 leading-relaxed">
+              {(() => {
+                const parts: string[] = [];
+                const loc = morningContext.location;
+
+                if (loc?.city) parts.push(loc.city);
+                if (!loc?.city && loc?.region) parts.push(loc.region);
+                if (loc?.country) parts.push(loc.country);
+
+                const place = parts.length ? parts.join(", ") : null;
+                const temp =
+                  typeof morningContext.weather?.temperatureC === "number"
+                    ? `${Math.round(morningContext.weather.temperatureC)}°C`
+                    : null;
+
+                if (place && temp) {
+                  return `${morningContext.suggestion} Right now it's about ${temp} in ${place}.`;
+                }
+
+                if (place) {
+                  return `${morningContext.suggestion} You are somewhere around ${place} this morning.`;
+                }
+
+                if (temp) {
+                  return `${morningContext.suggestion} It's about ${temp} where you are.`;
+                }
+
+                return morningContext.suggestion;
+              })()}
+            </p>
+          )}
+
+          {/* Breathing Orb */}
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="relative w-48 h-48 flex items-center justify-center">
+              {/* Outer glow */}
+              <div
+                className="animate-pulse-slow absolute w-full h-full rounded-full"
+                style={{
+                  background: `radial-gradient(circle, ${haloColor}20, transparent 70%)`,
+                  animationDuration: `${pulseDuration + 1.5}s`,
+                }}
+              />
+
+              {/* Inner glow */}
+              <div
+                className="animate-pulse-slow absolute w-40 h-40 rounded-full blur-[40px]"
+                style={{
+                  animationDelay: "-0.6s",
+                  backgroundColor: innerColor,
+                  opacity: innerOpacity,
+                  animationDuration: `${pulseDuration + 1}s`,
+                }}
+              />
+
+              {/* Core orb */}
+              <div
+                className="animate-pulse-slow absolute w-32 h-32 rounded-full shadow-[0_0_45px_rgba(0,0,0,0.4)]"
+                style={{
+                  background: `radial-gradient(circle, ${coreColor}, ${haloColor})`,
+                  transform: `scale(${coreScale})`,
+                  opacity: coreOpacity,
+                  animationDuration: `${pulseDuration}s`,
+                }}
+              />
+            </div>
+
+            {/* Sun phase label */}
+            {sunPhase && (
+              <div className="mt-12 text-center">
+                <p className="text-sm text-zinc-500 capitalize">
+                  {sunPhase.phase?.replace(/-/g, " ") ?? "unknown"}
+                </p>
+              </div>
+            )}
           </div>
-        </main>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center pb-8">
+          <button className="text-zinc-500 text-sm py-4 hover:text-zinc-300">
+            I am here
+          </button>
+        </div>
       </div>
     );
   }

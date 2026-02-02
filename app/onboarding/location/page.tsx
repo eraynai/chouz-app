@@ -33,7 +33,10 @@ export default async function LocationOnboardingPage({ searchParams }: SearchPar
   );
 
   const params = await searchParams;
-  const finalReturnTo = params.returnTo || "/greet";
+  // By default, after setting location for the first time we guide the user
+  // into the gentle morning onboarding flow before they reach the main greet
+  // screen. Callers can override this with a custom `returnTo` param.
+  const finalReturnTo = params.returnTo || "/onboarding/morning";
   const isEdit = params.mode === "edit";
 
   if (hasLocation && !isEdit) {

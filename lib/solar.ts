@@ -43,13 +43,75 @@ export function getSunPhaseFromAltitude(altitudeDeg: number): SunPhase {
   return "evening";
 }
 
+// Time-based phase calculation using SunCalc.getTimes so we can distinguish
+// morning vs afternoon/evening even when the sun is at a similar altitude.
+function getSunPhaseFromTimes(
+  latitude: number,
+  longitude: number,
+  date: Date,
+  altitudeDeg: number,
+): SunPhase {
+  const times = SunCalc.getTimes(date, latitude, longitude) as {
+    nightEnd?: Date;
+    nauticalDawn?: Date;
+    dawn?: Date;
+    sunrise?: Date;
+    sunriseEnd?: Date;
+    goldenHourEnd?: Date;
+    solarNoon?: Date;
+    goldenHour?: Date;
+    sunsetStart?: Date;
+    sunset?: Date;
+    dusk?: Date;
+    nauticalDusk?: Date;
+    night?: Date;
+  };
+
+  const nowMs = date.getTime();
+  const ms = (d?: Date) => (d ? d.getTime() : NaN);
+
+  const nightEnd = ms(times.nightEnd);
+  const nauticalDawn = ms(times.nauticalDawn);
+  const dawn = ms(times.dawn);
+  const sunrise = ms(times.sunrise);
+  const goldenHourEnd = ms(times.goldenHourEnd ?? times.sunriseEnd);
+  const solarNoon = ms(times.solarNoon);
+  const goldenHour = ms(times.goldenHour);
+  const sunsetStart = ms(times.sunsetStart);
+  const sunset = ms(times.sunset);
+  const dusk = ms(times.dusk);
+  const nauticalDusk = ms(times.nauticalDusk);
+  const night = ms(times.night);
+
+  // If we don't have reasonable time data (e.g. polar regions), fall back to
+  // the simpler altitude-based phase.
+  if (!Number.isFinite(sunrise) || !Number.isFinite(sunset) || !Number.isFinite(solarNoon)) {
+    return getSunPhaseFromAltitude(altitudeDeg);
+  }
+
+  if (nowMs < nightEnd) return "night";
+  if (nowMs < nauticalDawn) return "astronomical-twilight";
+  if (nowMs < dawn) return "nautical-twilight";
+  if (nowMs < sunrise) return "civil-twilight";
+  if (nowMs < goldenHourEnd) return "dawn"; // early morning golden hour
+  if (nowMs < solarNoon) return "morning";
+  if (nowMs < goldenHour) return "midday";
+  if (nowMs < sunsetStart) return "afternoon";
+  if (nowMs < sunset) return "evening";
+  if (nowMs < dusk) return "civil-twilight";
+  if (nowMs < nauticalDusk) return "nautical-twilight";
+  if (nowMs < night) return "astronomical-twilight";
+
+  return "night";
+}
+
 export function getSunPhase(
   latitude: number,
   longitude: number,
   date: Date = new Date(),
 ): SunPhaseResult {
   const altitudeDeg = getSunAltitude(latitude, longitude, date);
-  const phase = getSunPhaseFromAltitude(altitudeDeg);
+  const phase = getSunPhaseFromTimes(latitude, longitude, date, altitudeDeg);
   return { altitudeDeg, phase };
 }
 
