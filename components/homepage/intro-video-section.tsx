@@ -140,7 +140,7 @@ export default function IntroVideoSection() {
     <section className="pt-20 reveal">
       <div className="relative mx-auto w-full max-w-4xl">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-serif md:text-3xl">Chouz is not about doing mornings &quot;right.&quot; It&apos;s about beginning them with care.</h2>
+          <h2 className="text-2xl font-serif md:text-3xl">Chouz is not about doing mornings &quot;right.&quot; It&apos;s about beginning them with care.<span class="itat"></span></h2>
           {/* <p className="mt-2">
             I didn&apos;t set out to build a morning ritual. I was trying to stop stress from deciding how my day began.
           </p> */}

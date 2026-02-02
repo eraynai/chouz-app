@@ -169,7 +169,10 @@ export default function SignupSection() {
       </div>
 
       {/* App Experience Section */}
-      <div className="mt-16 border-t border-gray-300 pt-16 pb-20 dark:border-gray-700">
+      <div
+        id="app-experience"
+        className="mt-16 border-t border-gray-300 pt-16 pb-20 dark:border-gray-700"
+      >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl mb-4 font-light font-serif">
             Continue with the full app experience
@@ -251,9 +254,9 @@ export default function SignupSection() {
         <div className="text-center">
           <a
             href="/greet"
-            className="inline-flex items-center justify-center rounded-full bg-[#2c2c2c] px-10 py-4 text-lg text-white hover:bg-[#3c3c3c] transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-100"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-medium text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:bg-white dark:text-black"
           >
-            Try the app now
+            <span>Try the app now</span>
           </a>
         </div>
       </div>

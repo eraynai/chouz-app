@@ -325,6 +325,36 @@ export default function HeroSection() {
                 Delivered by email. No credit card required.
               </p>
             </div>
+
+            {/* Alternate path: jump straight into the app experience */}
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.22em] text-muted-light dark:text-gray-500">
+                <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
+                <span>or</span>
+                <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
+              </div>
+              <div className="mt-10 flex flex-col items-center gap-4 md:flex-row">
+                <Link
+                  href="#app-experience"
+                  className="group relative inline-flex items-center justify-center rounded-pill bg-primary px-8 py-4 font-medium text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
+                  onClick={() => {
+                    try {
+                      posthog.capture("landing_app_cta_clicked", {
+                        location: "hero",
+                      });
+                    } catch {}
+                  }}
+                >
+                  <span>Try the full app experience</span>
+                  <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
+                    smartphone
+                  </span>
+                </Link>
+                  <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
+                Free 3 Day Trial. No credit card required.
+              </p>
+              </div>
+            </div>
           </div>
 
           <div
