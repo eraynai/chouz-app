@@ -130,17 +130,42 @@ export default function HeroSection() {
           <div className="animate-fade-in-up">
             <h1 className="mb-8 text-balance text-center text-3xl font-serif font-medium leading-tight md:text-5xl">
               <span className="block">
-                A calmer way to begin — {" "}
-                <span className="italic text-[var(--color-primary)]">before</span> the world needs you.
+                I never believed in morning routines. 
               </span>
               <span className="mt-2 text-balance block text-3xl leading-tight md:text-5xl">
-                So <span className="italic text-[var(--color-primary)]">you</span> can show up grounded for the people you support.
+                Then a different way of beginning changed how I start my day.
+              </span>
+               <span className="mt-2 text-balance block text-3xl leading-tight md:text-5xl">
+                Five quiet minutes is enough.
               </span>
             </h1>
             <div className="space-y-6 text-lg font-light leading-relaxed text-muted-light dark:text-gray-400 md:text-xl">
+            <div className="mt-10 flex flex-col items-center gap-4 md:flex-row">
+              <a
+                className="group relative inline-flex items-center justify-center rounded-pill bg-primary px-8 py-4 font-medium text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
+                href="#signup"
+                onClick={() => {
+                  try {
+                    posthog.capture("landing_primary_cta_clicked", {
+                      location: "hero",
+                    });
+                  } catch {}
+                }}
+              >
+                <span>Begin the 7-day Morning Path</span>
+                <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
+                  arrow_forward
+                </span>
+              </a>
+
+              <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
+                Delivered by email. No credit card required.
+              </p>
+            </div>
             <p>
               Chouz is a gentle morning ritual for wellness practitioners who want to feel emotionally prepared and grounded before they serve others.
             </p>
+            
     <section className="animate-fade-in">
       <div className="grid gap-8 md:grid-cols-2 md:gap-10">
         <div
@@ -251,28 +276,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col items-center gap-4 md:flex-row">
-              <a
-                className="group relative inline-flex items-center justify-center rounded-pill bg-primary px-8 py-4 font-medium text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
-                href="#signup"
-                onClick={() => {
-                  try {
-                    posthog.capture("landing_primary_cta_clicked", {
-                      location: "hero",
-                    });
-                  } catch {}
-                }}
-              >
-                <span>Begin the 7-day Morning Path</span>
-                <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
-                  arrow_forward
-                </span>
-              </a>
-
-              <p className="mt-4 text-xs text-muted-light dark:text-gray-500 md:mt-0">
-                Delivered by email. No credit card required.
-              </p>
-            </div>
+            
           </div>
 
           <div
