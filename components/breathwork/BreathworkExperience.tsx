@@ -303,6 +303,10 @@ export function BreathworkExperience() {
       share?: (data: { title?: string; text?: string; url?: string }) =>
         Promise<void> | void;
     };
+
+    if (nav.share) {
+      try {
+        await nav.share({ title: shareTitle, text: shareText, url: shareUrl });
       } catch {
         // user cancelled or share failed – silently ignore
       }
