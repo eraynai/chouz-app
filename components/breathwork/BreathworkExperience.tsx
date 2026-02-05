@@ -299,11 +299,10 @@ export function BreathworkExperience() {
     const shareText =
       "I just completed a 5-minute breathing path with Chouz.";
 
-    const nav = navigator as Navigator & { share?: Function };
-
-    if (nav.share) {
-      try {
-        await nav.share({ title: shareTitle, text: shareText, url: shareUrl });
+    const nav = navigator as Navigator & {
+      share?: (data: { title?: string; text?: string; url?: string }) =>
+        Promise<void> | void;
+    };
       } catch {
         // user cancelled or share failed – silently ignore
       }
