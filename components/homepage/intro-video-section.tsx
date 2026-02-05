@@ -167,7 +167,14 @@ export default function IntroVideoSection() {
             onClick={handleClick}
           >
             <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-white/80 bg-transparent shadow-lg transition-transform duration-300 group-hover:scale-110 dark:border-white/60">
-              <span className="material-symbols-outlined ml-1 text-3xl text-white">play_arrow</span>
+              {/* OLD: <span className="material-symbols-outlined ml-1 text-3xl text-white">play_arrow</span> */}
+              <svg
+                viewBox="0 0 24 24"
+                className="ml-1 h-8 w-8 text-white"
+                aria-hidden="true"
+              >
+                <path d="M9 7l8 5-8 5V7z" fill="currentColor" />
+              </svg>
             </div>
           </button>
         </div>

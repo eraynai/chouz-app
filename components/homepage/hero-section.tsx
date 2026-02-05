@@ -149,26 +149,37 @@ export default function HeroSection() {
               <div className="mt-10 flex flex-col items-center gap-12">
                 <div className="flex flex-col items-center gap-2 md:flex-row md:items-center">
                   <a
-  className="group relative inline-flex items-center justify-center
-             rounded-full bg-primary
-             px-4 py-2.5 text-xs
-             max-w-[260px] whitespace-normal text-center
-             md:px-6 md:py-3 md:text-sm md:max-w-none
-             font-medium text-primary-foreground
-             transition-all duration-300 hover:scale-[1.02] hover:shadow-lg
-             focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
-  href="#signup"
-  onClick={() => {
-    try {
-      posthog.capture('landing_primary_cta_clicked', { location: 'hero' });
-    } catch {}
-  }}
->
-  <span>Build your daily calm in 5 minutes</span>
-  <span className="material-symbols-outlined ml-2 text-sm transition-transform group-hover:translate-x-1">
-    arrow_forward
-  </span>
-</a>
+                    className="group relative inline-flex items-center justify-center
+                              rounded-full bg-primary
+                              px-4 py-2.5 text-xs
+                              max-w-[260px] whitespace-normal text-center
+                              md:px-6 md:py-3 md:text-sm md:max-w-none
+                              font-medium text-primary-foreground
+                              transition-all duration-300 hover:scale-[1.02] hover:shadow-lg
+                              focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
+                    href="#signup"
+                    onClick={() => {
+                      try {
+                        posthog.capture("landing_primary_cta_clicked", { location: "hero" });
+                      } catch {}
+                    }}
+                  >
+                    <span>Build your daily calm in 5 minutes</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                    >
+                      <path
+                        d="M5 12h12M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
                   <p className="text-xs text-muted-light dark:text-gray-500 md:ml-3">
                     Delivered by email. No credit card required.
                   </p>

@@ -49,7 +49,29 @@ export default function HeroFollowupSection() {
 
           <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-colors duration-[2500ms] ease-in-out hover:shadow-lg dark:border-gray-700 dark:bg-[#06070a] md:p-10">
             <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
-              <span className="material-symbols-outlined">block</span>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="7.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                />
+                <line
+                  x1="8.5"
+                  y1="8.5"
+                  x2="15.5"
+                  y2="15.5"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                />
+              </svg>
             </div>
             <h3 className="mb-4 text-xl font-serif text-zinc-900 dark:text-zinc-50">This is not:</h3>
             <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200 md:text-left">
@@ -99,22 +121,85 @@ export default function HeroFollowupSection() {
       </div> */}
 
       <div
-        className="mt-16 grid grid-cols-1 gap-6 border-t border-gray-200 pt-8 text-sm text-muted-light dark:border-white/10 dark:text-gray-500 md:grid-cols-3 animate-fade-in"
-        style={{ animationDelay: "0.4s" }}
-      >
-        <div className="flex items-center gap-3">
-          <span className="material-symbols-outlined text-gray-400">spa</span>
-          <span>No gamification.</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="material-symbols-outlined text-gray-400">insights</span>
-          <span>No performance tracking.</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="material-symbols-outlined text-gray-400">self_improvement</span>
-          <span>Just a calm way to begin.</span>
-        </div>
-      </div>
+  className="mt-16 grid grid-cols-1 gap-6 border-t border-gray-200 pt-8 text-sm text-muted-light dark:border-white/10 dark:text-gray-500 md:grid-cols-3 animate-fade-in"
+  style={{ animationDelay: "0.4s" }}
+>
+  <div className="flex items-center gap-3">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5 text-gray-400"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 4c-1.5 2-2.5 4.5-2.5 7 0 2.2.9 3.9 2.5 5 1.6-1.1 2.5-2.8 2.5-5 0-2.5-1-5-2.5-7zM5 9c-.8 1.4-1.3 3-1.3 4.5 0 2.3 1 4 2.6 5.2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M19 9c.8 1.4 1.3 3 1.3 4.5 0 2.3-1 4-2.6 5.2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+    <span>No gamification.</span>
+  </div>
+  <div className="flex items-center gap-3">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5 text-gray-400"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 17l4-6 3 4 4-8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="5" cy="17" r="1.2" fill="currentColor" />
+      <circle cx="9" cy="11" r="1.2" fill="currentColor" />
+      <circle cx="12" cy="15" r="1.2" fill="currentColor" />
+      <circle cx="16" cy="7" r="1.2" fill="currentColor" />
+    </svg>
+    <span>No performance tracking.</span>
+  </div>
+  <div className="flex items-center gap-3">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5 text-gray-400"
+      aria-hidden="true"
+    >
+      <circle
+        cx="12"
+        cy="7"
+        r="2.2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M8 20c1-1.8 2.3-3 4-3s3 1.2 4 3"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7 14c1-.8 2.5-1.5 5-1.5s4 .7 5 1.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+    <span>Just a calm way to begin.</span>
+  </div>
+</div>
     </section>
   );
 }
