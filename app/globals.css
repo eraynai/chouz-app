@@ -168,6 +168,97 @@
   transform: translateY(0);
 }
 
+/* Scroll hint pill with animated orbit */
+.scroll-hint-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  border: 0;
+  /* Static inner border */
+  box-shadow: inset 0 0 0 1px #f59e0b;
+  background-color: rgba(15, 23, 42, 0.6);
+  color: #fefce8; /* warm off-white */
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  overflow: hidden;
+}
+
+.dark .scroll-hint-pill {
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 0 3px #fbbf24;
+}
+
+/* Draw-style border animation around the pill */
+.scroll-hint-pill::before,
+.scroll-hint-pill::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: 1.2px solid transparent; /* thicker so it's visible */
+  width: 0;
+  height: 0;
+  border-radius: inherit;
+}
+
+.scroll-hint-pill::before {
+  top: 0;
+  left: 0;
+  border-top-color: #fed7aa; /* lighter, brighter orange */
+  border-right-color: #fed7aa;
+  animation: scrollHintBorder 700ms infinite;
+}
+
+.scroll-hint-pill::after {
+  bottom: 0;
+  right: 0;
+  animation:
+    scrollHintBorder 700ms 400ms infinite,
+    scrollHintBorderColor 700ms 400ms infinite;
+}
+
+@keyframes scrollHintBorder {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+  }
+  50% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes scrollHintBorderColor {
+  0% {
+    border-bottom-color: #fed7aa;
+    border-left-color: #fed7aa;
+  }
+  50% {
+    border-bottom-color: #fed7aa;
+    border-left-color: #fed7aa;
+  }
+  51% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  100% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
 /* Fade animations */
 @keyframes fadeIn {
   from { opacity: 0; }

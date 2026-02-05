@@ -42,7 +42,29 @@ export default function ForYouSection() {
 
         <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-white md:p-10">
           <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-100 dark:text-gray-600">
-            <span className="material-symbols-outlined">block</span>
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="7.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              />
+              <line
+                x1="8.5"
+                y1="8.5"
+                x2="15.5"
+                y2="15.5"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
           <h3 className="mb-4 text-xl font-serif text-zinc-900">This is not:</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-700">

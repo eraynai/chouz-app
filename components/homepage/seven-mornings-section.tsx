@@ -48,7 +48,7 @@ export default function SevenMorningsSection() {
 
   return (
     <>
-    <section className="reveal grid items-center gap-12 md:grid-cols-2">
+    {/* <section className="reveal grid items-center gap-12 md:grid-cols-2">
       <div className="rounded-2xl bg-secondary p-8 transition-all duration-500 hover:shadow-md dark:bg-background-dark md:order-2">
         <div className="mb-2 flex items-baseline">
           <span
@@ -92,7 +92,7 @@ export default function SevenMorningsSection() {
         </ul>
       </div>
        
-    </section>
+    </section> */}
     <div className="text-center">
           <p>Nothing to complete. Nothing to track. Just a space to begin.</p>
         </div>

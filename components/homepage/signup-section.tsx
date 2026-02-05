@@ -59,7 +59,7 @@ export default function SignupSection() {
       <div className="relative z-10 mx-auto max-w-md">
         <h2 className="mb-4 text-3xl font-serif">Sign up for chouz</h2>
         <p className="mb-8 text-muted-light dark:text-muted-dark">
-          Join the free 7-morning journey.
+          Begin a free 5-minute breathing practice.
         </p>
 
         {/* <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
@@ -150,7 +150,7 @@ export default function SignupSection() {
             <span>
               {status === "loading"
                 ? "Joining…"
-                : "Begin tomorrow's Chouz Morning Path"}
+                : "Get My 5-Minute Calm"}
             </span>
           </button>
 
