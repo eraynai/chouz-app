@@ -201,30 +201,36 @@ export function BreathworkExperience() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Session clock driven by requestAnimationFrame
+  // Session clock driven by requestAnimationFrame, using the audio's currentTime
   useEffect(() => {
     if (!isPlaying) return;
 
     let frameId: number;
-    const start = performance.now() - elapsed;
 
-    const loop = (now: number) => {
-      const t = now - start;
-      if (t >= SESSION_TOTAL_MS) {
-        setElapsed(SESSION_TOTAL_MS);
-        setIsPlaying(false);
-        if (audioRef.current) {
-          audioRef.current.pause();
+    const loop = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      const audioElapsedMs = audio.currentTime * 1000;
+      const clamped = Math.min(audioElapsedMs, SESSION_TOTAL_MS);
+
+      setElapsed(clamped);
+
+      // If audio has finished or been paused, stop the loop
+      if (audio.paused || clamped >= SESSION_TOTAL_MS) {
+        if (clamped >= SESSION_TOTAL_MS) {
+          setIsPlaying(false);
+          audio.pause();
         }
         return;
       }
-      setElapsed(t);
+
       frameId = requestAnimationFrame(loop);
     };
 
     frameId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(frameId);
-  }, [isPlaying, elapsed]);
+  }, [isPlaying]);
 
   // Derive current script segment, phase, phase progress, timer
   let currentPhase: PhaseLabel | null = null;
@@ -247,6 +253,8 @@ export function BreathworkExperience() {
     phaseT = 1;
   }
 
+  const segmentIndex = idx;
+
   const remainingMs = Math.max(SESSION_TOTAL_MS - elapsed, 0);
   const totalSeconds = Math.round(remainingMs / 1000);
   const mm = Math.floor(totalSeconds / 60);
@@ -267,13 +275,45 @@ export function BreathworkExperience() {
 
   const isBreathingSegment = !!currentPhase;
 
+  // DEBUG: log key timing + phase info so we can see why the orb is in a given state
+  if (typeof window !== "undefined") {
+    const audio = audioRef.current;
+    const audioSeconds = audio ? audio.currentTime : null;
+
+    // This will run on each render; filter in DevTools if it’s too noisy
+    // You can remove these logs once you’ve confirmed behavior.
+    // eslint-disable-next-line no-console
+    console.log("[BreathworkExperience]", {
+      elapsedMs: Math.round(elapsed),
+      elapsedSeconds: (elapsed / 1000).toFixed(1),
+      audioSeconds: audioSeconds !== null ? audioSeconds.toFixed(2) : null,
+      segmentIndex,
+      currentText: SCRIPT_SEGMENTS[segmentIndex]?.text?.slice(0, 40) ?? null,
+      currentPhase,
+      phaseT: Number(phaseT.toFixed(3)),
+      isBreathingSegment,
+      remainingMs: Math.round(remainingMs),
+      timerText,
+      started,
+      isPlaying,
+    });
+  }
+
   const togglePlay = () => {
     if (isPlaying) {
+      // eslint-disable-next-line no-console
+      console.log("[BreathworkExperience] Pausing at", {
+        elapsedMs: Math.round(elapsed),
+      });
       setIsPlaying(false);
       if (audioRef.current) {
         audioRef.current.pause();
       }
     } else {
+      // eslint-disable-next-line no-console
+      console.log("[BreathworkExperience] Starting / resuming", {
+        previousElapsedMs: Math.round(elapsed),
+      });
       setStarted(true);
       setIsPlaying(true);
       if (audioRef.current) {
@@ -357,8 +397,21 @@ export function BreathworkExperience() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-8 py-10">
         <div className="w-full max-w-3xl flex flex-col gap-10 items-center">
-          {/* Orb + (no script text) */}
-          <div className="relative w-full max-w-xl flex flex-col items-center gap-8">
+          {/* Orb + phase label above */}
+          <div className="relative w-full max-w-xl flex flex-col items-center gap-4">
+            {/* Phase label above orb */}
+            <div className="min-h-[1.5rem] text-sm text-white/70 flex items-center justify-center">
+              {isBreathingSegment && (
+                <span>
+                  {currentPhase === "inhale"
+                    ? "Inhale"
+                    : currentPhase === "hold"
+                    ? "Hold"
+                    : "Exhale"}
+                </span>
+              )}
+            </div>
+
             {/* Orb visuals */}
             <div className="relative w-80 h-80 flex items-center justify-center">
               {/* Center dot */}
@@ -428,19 +481,8 @@ export function BreathworkExperience() {
             </div>
           </div>
 
-          {/* Phase label and timer */}
+          {/* Timer only (phase label is now above orb) */}
           <div className="flex items-center justify-center w-full max-w-xl text-sm text-white/60">
-            <div className="min-h-[1.5rem]">
-              {isBreathingSegment && (
-                <span>
-                  {currentPhase === "inhale"
-                    ? "Inhale"
-                    : currentPhase === "hold"
-                    ? "Hold"
-                    : "Exhale"}
-                </span>
-              )}
-            </div>
             <div className="font-mono tracking-wide text-[var(--color-primary)]">
               {started ? timerText : "5:00"}
             </div>
