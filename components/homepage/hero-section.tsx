@@ -130,7 +130,11 @@ export default function HeroSection() {
         </div>
       </nav>
 
-      <header className="hero-bg relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+     <header className="hero-bg relative flex
+             min-h-[calc(100vh-4rem)] md:min-h-screen
+             items-center justify-center
+             overflow-hidden pt-10 md:pt-20"
+>
         <div className="hero-overlay" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center md:text-left">
           <div className="animate-fade-in-up">
