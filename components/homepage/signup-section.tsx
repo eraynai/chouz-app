@@ -1,55 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function SignupSection() {
-  // const [countdown, setCountdown] = useState({
-  //   hours: "14",
-  //   minutes: "35",
-  //   seconds: "12",
-  // });
+
 
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
-
-  useEffect(() => {
-    // const getNext7AM = () => {
-    //   const now = new Date();
-    //   const next7AM = new Date();
-
-    //   next7AM.setHours(7, 0, 0, 0);
-
-    //   if (now >= next7AM) {
-    //     next7AM.setDate(next7AM.getDate() + 1);
-    //   }
-
-    //   return next7AM;
-    // };
-
-    // const tick = () => {
-    //   const now = Date.now();
-    //   const endTime = getNext7AM();
-    //   const timeLeft = endTime.getTime() - now;
-
-    //   if (timeLeft < 0) return;
-
-    //   // const totalHours = Math.floor(timeLeft / (1000 * 60 * 60));
-    //   // const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    //   // const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-    //   // setCountdown({
-    //   //   hours: String(totalHours).padStart(2, "0"),
-    //   //   minutes: String(minutes).padStart(2, "0"),
-    //   //   seconds: String(seconds).padStart(2, "0"),
-    //   // });
-    // };
-
-    // tick();
-    // const id = window.setInterval(tick, 1000);
-    // return () => window.clearInterval(id);
-  }, []);
 
   return (
     <section
@@ -61,31 +20,6 @@ export default function SignupSection() {
         <p className="mb-8 text-muted-light dark:text-muted-dark">
           Begin a free 5-minute breathing practice.
         </p>
-
-        {/* <div className="mb-8 rounded-2xl border border-gray-100 bg-secondary/50 px-4 py-6 backdrop-blur-sm dark:border-white/5 dark:bg-white/5">
-          <div className="mb-4 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-light opacity-80 dark:text-muted-dark">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-            <span>The next morning begins in…</span>
-          </div>
-
-          <div className="mx-auto grid max-w-sm grid-cols-3 gap-2 text-center md:gap-4">
-            {[
-              { label: "Hours", value: countdown.hours },
-              { label: "Mins", value: countdown.minutes },
-              { label: "Secs", value: countdown.seconds },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center">
-                <span className="tabular-nums text-2xl font-serif font-medium tracking-tight text-primary dark:text-white md:text-3xl">
-                  {item.value}
-                </span>
-                <span className="mt-2 text-[10px] uppercase tracking-widest text-muted-light dark:text-gray-500">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
         <form
           className="space-y-4"
           onSubmit={async (e) => {
