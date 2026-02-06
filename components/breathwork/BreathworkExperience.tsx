@@ -253,7 +253,7 @@ export function BreathworkExperience() {
     phaseT = 1;
   }
 
-  const segmentIndex = idx;
+  // const segmentIndex = idx;
 
   const remainingMs = Math.max(SESSION_TOTAL_MS - elapsed, 0);
   const totalSeconds = Math.round(remainingMs / 1000);
@@ -283,21 +283,21 @@ export function BreathworkExperience() {
     // This will run on each render; filter in DevTools if it’s too noisy
     // You can remove these logs once you’ve confirmed behavior.
     // eslint-disable-next-line no-console
-    // console.log("[BreathworkExperience]", {
-    //   elapsedMs: Math.round(elapsed),
-    //   elapsedSeconds: (elapsed / 1000).toFixed(1),
-    //   audioSeconds: audioSeconds !== null ? audioSeconds.toFixed(2) : null,
-    //   segmentIndex,
-    //   currentText: SCRIPT_SEGMENTS[segmentIndex]?.text?.slice(0, 40) ?? null,
-    //   currentPhase,
-    //   phaseT: Number(phaseT.toFixed(3)),
-    //   isBreathingSegment,
-    //   remainingMs: Math.round(remainingMs),
-    //   timerText,
-    //   started,
-    //   isPlaying,
-    // });
-  }
+  //   console.log("[BreathworkExperience]", {
+  //     elapsedMs: Math.round(elapsed),
+  //     elapsedSeconds: (elapsed / 1000).toFixed(1),
+  //     audioSeconds: audioSeconds !== null ? audioSeconds.toFixed(2) : null,
+  //     segmentIndex,
+  //     currentText: SCRIPT_SEGMENTS[segmentIndex]?.text?.slice(0, 40) ?? null,
+  //     currentPhase,
+  //     phaseT: Number(phaseT.toFixed(3)),
+  //     isBreathingSegment,
+  //     remainingMs: Math.round(remainingMs),
+  //     timerText,
+  //     started,
+  //     isPlaying,
+  //   });
+  // }
 
   const togglePlay = () => {
     if (isPlaying) {
