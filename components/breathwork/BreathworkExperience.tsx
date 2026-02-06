@@ -276,13 +276,9 @@ export function BreathworkExperience() {
   const isBreathingSegment = !!currentPhase;
 
   // DEBUG: log key timing + phase info so we can see why the orb is in a given state
-  if (typeof window !== "undefined") {
-    const audio = audioRef.current;
-    const audioSeconds = audio ? audio.currentTime : null;
-
-    // This will run on each render; filter in DevTools if it’s too noisy
-    // You can remove these logs once you’ve confirmed behavior.
-    // eslint-disable-next-line no-console
+  // if (typeof window !== "undefined") {
+  //   const audio = audioRef.current;
+  //   const audioSeconds = audio ? audio.currentTime : null;
   //   console.log("[BreathworkExperience]", {
   //     elapsedMs: Math.round(elapsed),
   //     elapsedSeconds: (elapsed / 1000).toFixed(1),
