@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PrivacySettingsLink from "@/components/consent/PrivacySettingsLink";
 
 export default function FooterSection() {
   const year = new Date().getFullYear();
@@ -19,6 +20,7 @@ export default function FooterSection() {
           >
             Privacy &amp; Terms of Use
           </Link>
+          <PrivacySettingsLink className="text-sm" />
           <div className="flex gap-4">
             <a
               href="https://www.instagram.com/chouz.app/"

@@ -1,8 +1,11 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/provider";
+import ConsentProvider from "@/components/consent/ConsentProvider";
+import ConsentBanner from "@/components/consent/ConsentBanner";
+import PostHogGate from "@/components/analytics/PostHogGate";
+import VercelAnalyticsGate from "@/components/analytics/VercelAnalyticsGate";
 export const metadata: Metadata = {
   title: "Chouz — A calmer way to begin",
   description:
@@ -75,9 +78,13 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
-          {children}
-          <Toaster />
-          <Analytics />
+          <ConsentProvider>
+            {children}
+            <Toaster />
+            <ConsentBanner />
+            <PostHogGate />
+            <VercelAnalyticsGate />
+          </ConsentProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
-import { initPosthog, posthog } from "@/lib/posthog";
+import { initPosthog, trackPosthog } from "@/lib/posthog";
+import { useConsent } from "@/components/consent/ConsentProvider";
 
 function MoonSunIcon() {
   return (
@@ -41,20 +42,11 @@ function MoonSunIcon() {
 }
 
 export default function HeroSection() {
+    const { analyticsConsent } = useConsent();
+
     useEffect(() => {
       const html = document.documentElement;
       let ticking = false;
-
-      // Initialize PostHog gently on the client and track a single landing view
-      initPosthog();
-      try {
-        posthog.capture("landing_viewed", {
-          page: "landing",
-          path: "/",
-        });
-      } catch {
-        // analytics failures should never affect the experience
-      }
 
       const updateTheme = () => {
         const scrollY = window.scrollY;
@@ -107,6 +99,16 @@ export default function HeroSection() {
         clearTimeout(transitionTimer);
       };
     }, []);
+
+    useEffect(() => {
+      if (analyticsConsent !== "granted") return;
+      void initPosthog().then(() => {
+        trackPosthog("landing_viewed", {
+          page: "landing",
+          path: "/",
+        });
+      });
+    }, [analyticsConsent]);
 
   return (
     <>
@@ -163,9 +165,10 @@ export default function HeroSection() {
                               focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 dark:focus:ring-offset-black"
                     href="#signup"
                     onClick={() => {
-                      try {
-                        posthog.capture("landing_primary_cta_clicked", { location: "hero" });
-                      } catch {}
+                      if (analyticsConsent !== "granted") return;
+                      void initPosthog().then(() => {
+                        trackPosthog("landing_primary_cta_clicked", { location: "hero" });
+                      });
                     }}
                   >
                     <span>Build your daily calm in 5 minutes</span>
