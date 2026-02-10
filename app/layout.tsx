@@ -9,7 +9,7 @@ import VercelAnalyticsGate from "@/components/analytics/VercelAnalyticsGate";
 export const metadata: Metadata = {
   title: "Chouz — A calmer way to begin",
   description:
-    "Chouz is a gentle 7-day morning ritual delivered by email, designed to help you begin your day with calm, presence, and emotional grounding — before the world needs you.",
+    "Chouz is a gentle 5-minute, web-based breathwork experience designed to help you arrive grounded and present before the day asks anything of you.",
   openGraph: {
     title: "Chouz — A calmer way to begin",
     description:
