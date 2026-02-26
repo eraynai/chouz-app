@@ -2,248 +2,281 @@ import Link from "next/link";
 import FooterSection from "@/components/homepage/footer";
 
 export const metadata = {
-  title: "Chouz – Privacy Policy & Terms of Use",
+  title: "Privacy Policy for Chouz",
 };
 
-export default function PrivacyTermsPage() {
+export default function PrivacyPage() {
   return (
     <>
       <main className="min-h-screen bg-white px-6 py-16 text-sm text-zinc-800">
         <div className="mx-auto max-w-3xl space-y-8">
-        <header className="space-y-3">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
-            <Link
-              href="/"
-              className="text-xs font-medium text-muted-light underline-offset-4 hover:underline dark:text-muted-dark"
-            >
-              ← Back to landing
-            </Link>
-            <h1 className="text-2xl font-serif font-medium">Privacy Policy &amp; Terms of Use</h1>
-          </div>
-          <p className="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
-            Effective date: January 22, 2026
-          </p>
-          <p>
-            Chouz is built on care, consent, and clarity. This document explains how your information is
-            handled and the terms under which Chouz is offered — now and in the future.
-          </p>
-        </header>
+          <header className="space-y-3">
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
+              <Link
+                href="/"
+                className="text-xs font-medium text-gray-600 underline-offset-4 hover:underline"
+              >
+                Back to landing
+              </Link>
+              <h1 className="text-2xl font-serif font-medium">Privacy Policy for Chouz</h1>
+            </div>
+            <p className="text-xs uppercase tracking-[0.18em] text-gray-500">
+              Effective date: February 26, 2026
+            </p>
+            <p>
+              Chouz (&quot;Chouz,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides a
+              mobile meditation and reflection app. This Privacy Policy explains how we
+              collect, use, disclose, and protect information when you use the Chouz app
+              and related services.
+            </p>
+            <p>By using Chouz, you agree to this Privacy Policy.</p>
+          </header>
 
-        <section className="space-y-4">
-          <h2 className="text-lg font-serif">Privacy Policy</h2>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">1. What information we collect</h3>
-            <p>Chouz collects only the information necessary to deliver the experience.</p>
-            <p className="font-medium">Information you provide</p>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">1. Scope</h2>
+            <p>This Privacy Policy applies to:</p>
             <ul className="list-disc space-y-1 pl-5">
-              <li>Your email address when you sign up for Chouz</li>
-              <li>Your name or billing information if you purchase a paid offering</li>
-              <li>Any information you choose to share by replying to Chouz emails or completing optional forms</li>
-            </ul>
-            <p className="font-medium">Information collected automatically</p>
-            <ul className="list-disc space-y-1 pl-5">
-              <li>Basic email engagement data (such as opens or clicks)</li>
-              <li>Transaction-related metadata for paid products (processed securely by third-party providers)</li>
+              <li>The Chouz mobile app</li>
+              <li>Account creation and sign-in</li>
+              <li>Meditation sessions, reflections, and journal features</li>
+              <li>Customer support communications related to the app</li>
             </ul>
             <p>
-              We do <strong>not</strong> collect sensitive personal data. We do <strong>not</strong> sell or rent your
-              data. We do <strong>not</strong> use your data for advertising or behavioral profiling.
+              It does not govern third-party services that have their own privacy policies
+              (for example, Google Play billing services).
             </p>
-          </div>
+          </section>
 
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">2. How your information is used</h3>
-            <p>Your information is used solely to:</p>
+          <section className="space-y-4">
+            <h2 className="text-lg font-serif">2. Information We Collect</h2>
+            <p>
+              We collect only the information needed to operate Chouz and provide the app
+              experience.
+            </p>
+
+            <div className="space-y-3">
+              <h3 className="text-base font-medium">A. Information You Provide</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                <li>Email address (for account creation, sign-in, and account support)</li>
+                <li>Name (if you choose to provide it)</li>
+                <li>Journal entries / reflections that you enter in the app</li>
+                <li>
+                  Reminder settings and app preferences (such as reminder time)
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-base font-medium">B. Information Related to App Use</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                <li>
+                  Meditation session activity, such as session completion and
+                  progress/history
+                </li>
+                <li>
+                  Feature usage data needed to provide app functionality (for example,
+                  whether a reflection was saved)
+                </li>
+                <li>Subscription / entitlement status (for trial and premium access)</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-base font-medium">C. Billing and Purchase Information</h3>
+              <p>
+                If you subscribe through Google Play, billing is processed by Google. We do
+                not store your full payment card details.
+              </p>
+              <p>
+                We may store limited subscription-related metadata needed to manage access
+                and support billing integrity, such as:
+              </p>
+              <ul className="list-disc space-y-1 pl-5">
+                <li>Subscription status</li>
+                <li>Product identifier</li>
+                <li>Expiration/renewal status</li>
+                <li>Limited purchase reference information (where applicable)</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">3. How We Use Your Information</h2>
+            <p>We use your information to:</p>
             <ul className="list-disc space-y-1 pl-5">
-              <li>Deliver free and paid Chouz experiences</li>
-              <li>Process payments and provide access to purchased offerings</li>
-              <li>Communicate with you about Chouz-related content, updates, or support</li>
-              <li>Improve the experience using aggregate, non-identifying insights</li>
+              <li>Create and manage your account</li>
+              <li>Authenticate your sign-in</li>
+              <li>Deliver meditation content and app features</li>
+              <li>Save your journal entries and reflections</li>
+              <li>Save and apply your reminder and app settings</li>
+              <li>Provide trial and subscription access</li>
+              <li>Provide customer support</li>
+              <li>Maintain app security and prevent abuse</li>
+              <li>Comply with legal obligations</li>
             </ul>
-            <p>We will never use your information in a way that contradicts the purpose you signed up for.</p>
-          </div>
+            <p>We do not sell your personal information.</p>
+            <p>
+              We do not use your personal information for third-party behavioral
+              advertising.
+            </p>
+          </section>
 
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">3. Legal basis for processing (GDPR)</h3>
-            <p>For users in the European Union, we process personal data based on:</p>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">4. How We Share Information</h2>
+            <p>
+              We may share information only as necessary to operate Chouz, including with:
+            </p>
             <ul className="list-disc space-y-1 pl-5">
               <li>
-                <strong>Consent</strong> — when you voluntarily provide your information
+                Service providers / infrastructure providers (such as hosting, storage,
+                and backend services)
               </li>
               <li>
-                <strong>Contractual necessity</strong> — when processing payments or delivering paid content
+                Google Play / Google for subscription billing and purchase processing
               </li>
               <li>
-                <strong>Legitimate interest</strong> — to operate and improve Chouz responsibly
+                Legal authorities if required by law, regulation, or valid legal process
+              </li>
+              <li>
+                Professional advisors (for legal, security, or compliance purposes) when
+                necessary
               </li>
             </ul>
-            <p>You may withdraw consent at any time where applicable.</p>
-          </div>
+            <p>We do not share your journal reflections for advertising purposes.</p>
+          </section>
 
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">4. Email communications</h3>
-            <p>Chouz is primarily delivered by email.</p>
-            <p>By signing up, you may receive:</p>
-            <ul className="list-disc space-y-1 pl-5">
-              <li>The 7-Day Morning Path</li>
-              <li>Follow-up reflections or invitations related to Chouz</li>
-              <li>Transactional emails for paid offerings (receipts, access, support)</li>
-            </ul>
-            <p>
-              You can unsubscribe from non-essential emails at any time using the link provided in every message.
-              Transactional emails required to deliver paid services may still be sent.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">5. Payments &amp; third-party services</h3>
-            <p>
-              Paid offerings are processed using trusted third-party payment providers (e.g. Stripe, Gumroad, or
-              similar).
-            </p>
-            <p>Chouz <strong>does not store your payment details</strong>.</p>
-            <p>
-              Third-party providers may process data outside of Canada or the EU but are required to meet GDPR,
-              PIPEDA, and applicable security standards.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">6. Data retention</h3>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">5. Data Retention</h2>
             <p>We retain personal data only as long as necessary to:</p>
             <ul className="list-disc space-y-1 pl-5">
-              <li>Deliver the service</li>
-              <li>Meet legal or accounting obligations</li>
-              <li>Provide support if requested</li>
+              <li>Provide the app and its features</li>
+              <li>Maintain account access and subscription functionality</li>
+              <li>Provide support</li>
+              <li>
+                Meet legal, billing, fraud prevention, security, and compliance
+                obligations
+              </li>
             </ul>
             <p>
-              You may request deletion of your data at any time, subject to legal requirements.
+              When you delete your account, we delete or anonymize personal app data as
+              described in Section 8 (&quot;Account Deletion&quot;).
             </p>
-          </div>
+          </section>
 
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">7. Your rights (GDPR &amp; PIPEDA)</h3>
-            <p>You have the right to:</p>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">6. Data Security</h2>
+            <p>
+              We use reasonable administrative, technical, and organizational measures to
+              protect your information.
+            </p>
+            <p>
+              No method of transmission or storage is 100% secure, and we cannot
+              guarantee absolute security. However, we work to protect your data and limit
+              access to what is necessary.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">7. Children&apos;s Privacy</h2>
+            <p>
+              Chouz is not directed to children and is not intended for use by children
+              under the age required by applicable law in your region (for example, under
+              13 in some jurisdictions).
+            </p>
+            <p>
+              If you believe a child has provided personal information to Chouz, contact
+              us at hello@chouz.app and we will take appropriate steps.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-lg font-serif">8. Account Deletion</h2>
+            <p>You can delete your Chouz account in the app by going to:</p>
+            <p className="font-medium">Settings &gt; Delete Account</p>
+            <p>
+              When you request account deletion, we delete or anonymize your personal app
+              data, including:
+            </p>
+            <ul className="list-disc space-y-1 pl-5">
+              <li>Profile information</li>
+              <li>Journal entries and reflections</li>
+              <li>App settings (including reminder preferences)</li>
+              <li>Meditation session history used in Chouz</li>
+            </ul>
+            <p>
+              After deletion, your account can no longer be used to access the app.
+            </p>
+
+            <div className="space-y-2">
+              <h3 className="text-base font-medium">
+                Important: Subscription Cancellation Is Separate
+              </h3>
+              <p>
+                Deleting your Chouz account does not cancel a subscription purchased
+                through Google Play. Subscription cancellation must be managed in Google
+                Play.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="text-base font-medium">Web Deletion Information</h3>
+              <p>You can also view account deletion information at:</p>
+              <p>
+                <a
+                  href="https://chouz.app/account-deletion"
+                  className="underline underline-offset-4"
+                >
+                  https://chouz.app/account-deletion
+                </a>
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">9. Your Rights and Choices</h2>
+            <p>Depending on where you live, you may have rights to:</p>
             <ul className="list-disc space-y-1 pl-5">
               <li>Access your personal data</li>
-              <li>Request correction or deletion</li>
-              <li>Withdraw consent</li>
-              <li>Request data portability (where applicable)</li>
-              <li>File a complaint with a relevant data protection authority</li>
+              <li>Request correction of inaccurate data</li>
+              <li>Request deletion of your personal data</li>
+              <li>Withdraw consent where processing is based on consent</li>
+              <li>Request a copy of your data (where applicable)</li>
+              <li>Lodge a complaint with a relevant privacy regulator</li>
             </ul>
+            <p>To make a request, contact us at hello@chouz.app.</p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">10. International Data Transfers</h2>
             <p>
-              To exercise these rights, contact: <strong>hello@chouz.app</strong>
+              Your information may be processed in countries other than your own,
+              depending on where our service providers and infrastructure operate.
             </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">8. Changes to this policy</h3>
             <p>
-              If this policy changes, the effective date will be updated. Material changes will be communicated
-              clearly and respectfully.
+              Where required, we take appropriate steps to protect personal data in
+              accordance with applicable law.
             </p>
-          </div>
-        </section>
+          </section>
 
-        <section className="space-y-4 pt-4">
-          <h2 className="text-lg font-serif">Terms of Use</h2>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">9. What Chouz is (and is not)</h3>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time.</p>
             <p>
-              Chouz offers reflective, grounding practices designed to support how you begin your day.
+              If we make material changes, we will update the Effective date above and,
+              where appropriate, provide notice in the app or through other reasonable
+              means.
             </p>
-            <p>Chouz:</p>
-            <ul className="list-disc space-y-1 pl-5">
-              <li>Is not medical advice</li>
-              <li>Is not therapy</li>
-              <li>Is not a substitute for professional mental health care</li>
-            </ul>
-            <p>Paid offerings extend the practice but do not change its nature.</p>
-          </div>
+          </section>
 
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">10. Personal responsibility</h3>
+          <section className="space-y-3">
+            <h2 className="text-lg font-serif">12. Contact Us</h2>
             <p>
-              You engage with Chouz voluntarily and at your own discretion. If you are experiencing significant
-              emotional distress or mental health challenges, we encourage you to seek support from a qualified
-              professional.
+              If you have questions, privacy requests, or need account deletion support,
+              contact:
             </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">11. Paid offerings &amp; access</h3>
-            <p>Paid offerings may include:</p>
-            <ul className="list-disc space-y-1 pl-5">
-              <li>Digital content</li>
-              <li>Email-based programs</li>
-              <li>Subscriptions or time-limited access</li>
-            </ul>
-            <p>
-              Details, pricing, and access terms will be clearly stated at the point of purchase. Unless otherwise
-              specified, paid content is for <strong>personal use only</strong>.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">12. Refunds &amp; cancellations</h3>
-            <p>Refund and cancellation terms will be clearly stated at the time of purchase.</p>
-            <p>
-              Subscriptions, if offered, can be cancelled according to the terms presented during signup.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">13. Intellectual property</h3>
-            <p>
-              All Chouz content — free or paid — is the intellectual property of Chouz. Content may not be
-              reproduced, shared, resold, or redistributed without written permission.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">14. No guarantees</h3>
-            <p>
-              Chouz is offered as a reflective practice. We make no guarantees regarding outcomes, emotional shifts,
-              or results.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">15. Limitation of liability</h3>
-            <p>To the fullest extent permitted by law, Chouz is not liable for:</p>
-            <ul className="list-disc space-y-1 pl-5">
-              <li>Emotional, physical, or psychological outcomes</li>
-              <li>Service interruptions or changes</li>
-              <li>Individual interpretations or use of the content</li>
-            </ul>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">16. Termination</h3>
-            <p>
-              You may stop using Chouz at any time. We reserve the right to modify or discontinue offerings as the
-              project evolves.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">17. Governing law</h3>
-            <p>
-              These terms are governed by the laws of <strong>Canada</strong>, without limiting consumer protections
-              available under EU law.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-base font-medium">18. Contact</h3>
-            <p>
-              For questions or concerns, contact: <strong>hello@chouz.app</strong>
-            </p>
-          </div>
-        </section>
-      </div>
+            <p className="font-medium">hello@chouz.app</p>
+          </section>
+        </div>
       </main>
       <FooterSection />
     </>
