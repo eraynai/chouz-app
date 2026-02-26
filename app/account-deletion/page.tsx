@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Chouz Account Deletion",
   description: "How to request deletion of your Chouz account and data.",
 };
@@ -13,12 +14,12 @@ export default function AccountDeletionPage() {
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
             <Link
               href="/"
-              className="text-xs font-medium text-muted-light underline-offset-4 hover:underline dark:text-muted-dark"
+              className="text-xs font-medium text-gray-600 underline-offset-4 hover:underline"
             >
-              ← Back to landing
+              Back to landing
             </Link>
-            <h1 className="text-2xl font-serif font-medium">Chouz Account Deletion</h1>
           </div>
+          <h1 className="text-2xl font-serif font-medium">Chouz Account Deletion</h1>
           <p className="text-xs uppercase tracking-[0.18em] text-gray-500">
             Effective date: February 26, 2026
           </p>
