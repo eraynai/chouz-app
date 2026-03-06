@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chouz — A calmer way to begin",
     description:
-      "A gentle 7-day morning ritual delivered by email. No tracking. No pressure. Just presence.",
+      "Chouz is a gentle 5-minute, web-based breathwork experience designed to help you arrive grounded and present before the day asks anything of you.",
     url: "https://chouz.app", // update if different
     siteName: "Chouz",
     images: [
